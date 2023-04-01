@@ -1,0 +1,3 @@
+[[r2_buckets]]
+binding = 'in2it_bucket'
+bucket_name = 'in2it-bucket'

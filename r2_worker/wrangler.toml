@@ -1,0 +1,11 @@
+name = "r2_worker"
+main = "src/index.ts"
+compatibility_date = "2023-04-01"
+
+account_id = "fb08cc641ec7147b999eca630b90eba7"
+workers_dev = true
+
+[[r2_buckets]]
+binding = 'in2it_bucket'
+bucket_name = 'in2it-bucket'
+preview_bucket_name = 'preview-in2it-bucket'

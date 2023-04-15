@@ -1,5 +1,5 @@
-export default defineEventHandler((event) => {
+export default defineEventHandler(({ context }) => {
 	return {
-		api: 'works'
+		res: context.cloudflare.env.in2it_bucket
 	}
 });

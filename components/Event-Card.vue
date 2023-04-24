@@ -53,8 +53,8 @@
 	}
 
 	.featured-event-image{
-		max-height:160px;
 		width:auto;
+		max-height:100%;
 		border-radius:0px;
 	}
 

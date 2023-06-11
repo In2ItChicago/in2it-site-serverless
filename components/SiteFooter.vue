@@ -24,7 +24,7 @@
 
 			<div class="row">
 				<div class="col d-flex flex-row justify-content-center justify-content-sm-start mt-sm-4 mt-md-5">
-					<p class="footer-link me-5 d-none d-sm-block">© 2022 IN2IT</p> <!-- Hidden on xs screens -->
+					<p class="footer-link me-5 d-none d-sm-block">© 2023 IN2IT</p> <!-- Hidden on xs screens -->
 					<a href="#" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Terms of Use</a>
 					<a href="#" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Privacy Policy</a>
 					<a href="#" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Accessibility</a>
@@ -41,7 +41,7 @@
 			<!-- Visible only on xs screens -->
 			<div class="flex-row d-block d-sm-none">
 				<div class="d-flex flex-col align-items-center justify-content-center">
-					<p class="footer-link">© 2022 IN2IT</p>
+					<p class="footer-link">© 2023 IN2IT</p>
 				</div>
 			</div>
 		</div>

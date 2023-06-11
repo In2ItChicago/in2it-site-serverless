@@ -57,3 +57,26 @@
 		margin-bottom: 20px;;
 	}
 </style>
+
+<script setup>
+	const isLoggedIn = await getCurrentUser()
+	console.log('isLoggedIn', isLoggedIn);
+
+	//List all Documents
+	/* const db = useFirestore();
+	import { getDocs, collection } from "firebase/firestore";
+	const querySnapshot = await getDocs(collection(db, "events"));
+	querySnapshot.forEach((doc) => {
+		console.log(doc.id, JSON.stringify(doc.data()));
+	}); */
+
+	//Query Documents
+	/* const eventsRef = collection(db, "events");
+	const q = query(eventsRef, where("cost", ">", 0));
+	const querySnapshot = await getDocs(q);
+	querySnapshot.forEach((doc) => {
+		// doc.data() is never undefined for query doc snapshots
+		console.log(doc.id, JSON.stringify(doc.data()));
+	}); */
+
+</script>

@@ -1,16 +1,16 @@
 <template>
-	<h1 v-if="wasSuccessul">You have been signed out successfully!</h1>
+	<h1 v-if="requestState.success">You have been signed out successfully!</h1>
 </template>
 
 <script setup>
 	import { getAuth, signOut } from "firebase/auth";
 	const auth = getAuth();
-	let wasSuccessul = false;
+
+	const requestState = reactive({success: false});
 
 	signOut(auth).then(() => {
-		wasSuccessul = true;
+		requestState.success = true;
 		console.log('Sign-out successful.');
-		navigateTo('/');
 	}).catch((error) => {
 		console.log(error);
 	});

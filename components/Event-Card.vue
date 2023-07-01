@@ -1,7 +1,7 @@
 <template>
 	<div class="col-sm-12 col-md-6 col-lg-3">
 		<div class="card my-3 event-card">
-			<img src="~/assets/img/featured-event.jpg" class="card-img-top featured-event-image img-fluid" alt="featured-event">
+			<img :src="randomSrc()" class="card-img-top featured-event-image img-fluid" alt="featured-event">
 			<div class="card-img-overlay p-0" style="height:160px;">
 				<h5 class="card-date-overlay">Apr 16</h5>
 			</div>
@@ -91,3 +91,17 @@
 		justify-content: space-between;
 	}
 </style>
+
+<script setup>
+	const imagePaths = [
+		'/img/impact-area-animals.png',
+		'/img/impact-area-arts-culture.png',
+		'/img/impact-area-food-hunger.png',
+		'/img/impact-area-nature-conservation.png',
+		'/img/impact-area-technology.png',
+	];
+
+	const randomSrc = () => {
+		return imagePaths[Math.floor(Math.random() * imagePaths.length)];
+	};
+</script>

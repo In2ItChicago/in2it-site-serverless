@@ -15,6 +15,9 @@
 					<li class="nav-item">
 						<a class="nav-link in2it-nav-link mx-2" href="#">Join Our Team</a>
 					</li>
+					<li class="nav-item" v-if="!isLoggedIn">
+						<a class="nav-link in2it-nav-link mx-2" href="/auth/register">Register</a>
+					</li>
 					<li class="nav-item" v-if="isLoggedIn">
 						<NuxtLink class="nav-link in2it-nav-link mx-2" to="/auth/sign-out">Sign Out</NuxtLink>
 					</li>

@@ -6,3 +6,4 @@ node_modules
 .env
 dist
 .DS_Store
+in2it-v2-service-account.json

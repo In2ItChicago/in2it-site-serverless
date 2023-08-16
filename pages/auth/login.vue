@@ -26,7 +26,7 @@
 	const email = useState('email');
 	const password = useState('password');
 
-	let currentUser = await getCurrentUser()
+	let currentUser = await getCurrentUser();
 	console.log('0 currentUser', currentUser);
 
 	const login = async () => {

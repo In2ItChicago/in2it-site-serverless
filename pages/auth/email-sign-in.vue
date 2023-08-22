@@ -101,7 +101,7 @@
 			console.log('result.user', result.user);
 			signInState.success = true;
 
-			navigateTo('/organization/dashboard');
+			navigateTo('/dashboard/organization');
 		})
 		.catch((error) => {
 			console.log('sign in failed', error);

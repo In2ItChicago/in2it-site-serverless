@@ -51,8 +51,6 @@
 <style>
 	.in2it-footer{
 		display:flex;
-		/* height:300px; */
-		/* max-height:auto; */
 		margin-top:auto;
 		background: transparent linear-gradient(3deg, #034A57 0%, #4DA89C 100%) 0% 0% no-repeat padding-box;
 	}

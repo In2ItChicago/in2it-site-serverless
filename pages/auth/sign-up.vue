@@ -3,7 +3,7 @@
 		<div class="in2it-overlay-form">
 			<div v-if="!submission.state">
 				<form @submit.prevent="signUp" class="needs-validation" novalidate>
-					<h1>Sign Up</h1>
+					<h1>Register</h1>
 					<div class="mb-3">
 						<label for="user-email" class="form-label">Email</label>
 						<input 
@@ -30,7 +30,7 @@
 							Please enter your name.
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary sign-up-btn in2it-btn">Sign up</button>
+					<button type="submit" class="btn btn-primary sign-up-btn in2it-btn">Register</button>
 				</form>
 
 				<div class="d-flex justify-content-center">

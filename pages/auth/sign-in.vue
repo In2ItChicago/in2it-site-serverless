@@ -3,7 +3,7 @@
 		<div class="in2it-overlay-form">
 			<div v-if="!submission.state">
 				<h1>Welcome back</h1>
-				<p>Log in to your account or <a href="/auth/sign-up">sign up</a>.</p>
+				<p>Log in to your account or <a href="/auth/sign-up">register</a>.</p>
 				<form @submit.prevent="signIn">
 					<div class="mb-3">
 						<label for="email" class="form-label">Email</label>
@@ -20,7 +20,7 @@
 					Confirm your identity by clicking the link in the email.
 				</p>
 			
-				<p>Don't have an account? <a href="/auth/sign-up" style="text-decoration: none;">Sign up</a>.</p>
+				<p>Don't have an account? <a href="/auth/sign-up" style="text-decoration: none;">Register</a>.</p>
 			</div>
 		</div>
 	</div>

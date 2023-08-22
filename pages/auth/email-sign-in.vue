@@ -29,7 +29,7 @@
 							Please enter your email address.
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary sign-up-btn in2it-btn">Sign in with Email</button>
+					<button type="submit" class="btn btn-primary sign-in-btn in2it-btn">Sign in with Email</button>
 				</form>
 
 				<div class="d-flex justify-content-center">
@@ -114,5 +114,9 @@
 </script>
 
 <style>
-
+	.sign-in-btn{
+		width:100%;
+		height:48px;
+		font-size:20px;
+	}
 </style>

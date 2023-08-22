@@ -7,19 +7,31 @@
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+			<div class="collapse navbar-collapse d-flex" id="navbarContent">
+				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li class="nav-item">
 						<a class="nav-link in2it-nav-link mx-2" href="#">About Us</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link in2it-nav-link mx-2" href="#">Join Our Team</a>
 					</li>
-					<li class="nav-item" v-if="!isLoggedIn">
-						<a class="nav-link in2it-nav-link mx-2" href="/auth/sign-up">Sign Up</a>
+				</ul>
+				<ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-3">
+					<li class="nav-item" v-if="!loggedIn">
+						<a class="nav-link in2it-nav-link mx-2" href="/auth/sign-in">Sign In</a>
 					</li>
-					<li class="nav-item" v-if="isLoggedIn">
-						<NuxtLink class="nav-link in2it-nav-link mx-2" to="/organization/dashboard">Dashboard</NuxtLink>
+					<li class="nav-item" v-if="!loggedIn">
+						<a class="nav-link in2it-nav-link mx-2" href="/auth/sign-up">Register</a>
+					</li>
+					<li class="nav-item dropdown" v-if="loggedIn">
+						<a class="nav-link in2it-nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Account
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="/organization/dashboard">My Organization</a></li>
+							<li><a class="dropdown-item" href="/organization/dashboard">My Opportunities</a></li>
+							<li><a class="dropdown-item" href="/auth/sign-out">Sign Out</a></li>
+						</ul>
 					</li>
 				</ul>
 			</div>
@@ -41,10 +53,27 @@
 	.in2it-brand{
 		margin:12px;
 	}
+
+	.dropdown-menu{
+		border-radius:0px;
+		padding:0px;
+	}
+
+	.dropdown-item{
+		color: #034A57;
+		font-size:18px;
+		font-weight:400;
+		padding-top:16px;
+		padding-bottom:12px;
+	}
+
+	.dropdown-item:active{
+		background-color:#0bab9c;
+		color:#fff;
+	}
 </style>
 
 <script setup>
-	const user = await getCurrentUser();
-	const isLoggedIn = ref(user);
+	const loggedIn = reactive(useCurrentUser());
 
 </script>

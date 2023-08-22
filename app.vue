@@ -18,11 +18,11 @@
 			if (prevUser && !user) {
 				// user logged out
 				console.log('user logged out');
-				router.push('/auth/login')
+				router.push('/');
 			} else if (user && typeof route.query.redirect === 'string') {
 				// user logged in
 				console.log('user logged in, query', route.query.redirect);
-				router.push(route.query.redirect)
+				router.push(route.query.redirect);
 			}
 		})
 	})

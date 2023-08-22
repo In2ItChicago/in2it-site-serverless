@@ -17,6 +17,9 @@ export default defineNuxtConfig({
 			measurementId: process.env.FIREBASE_MEASUREMENT_ID
 		},
 	},
+	routeRules: {
+		'/auth/sign-out': {ssr: false}
+	},
 	app: {
 		head: {
 			charset: 'utf-8',
@@ -39,7 +42,7 @@ export default defineNuxtConfig({
 				},
 				{
 					rel: 'stylesheet',
-					href: 'https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@500&display=swap'
+					href: 'https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap'
 				},
 			],
 			script: [

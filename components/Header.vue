@@ -16,10 +16,10 @@
 						<a class="nav-link in2it-nav-link mx-2" href="#">Join Our Team</a>
 					</li>
 					<li class="nav-item" v-if="!isLoggedIn">
-						<a class="nav-link in2it-nav-link mx-2" href="/auth/register">Register</a>
+						<a class="nav-link in2it-nav-link mx-2" href="/auth/sign-up">Sign Up</a>
 					</li>
 					<li class="nav-item" v-if="isLoggedIn">
-						<NuxtLink class="nav-link in2it-nav-link mx-2" to="/auth/sign-out">Sign Out</NuxtLink>
+						<NuxtLink class="nav-link in2it-nav-link mx-2" to="/organization/dashboard">Dashboard</NuxtLink>
 					</li>
 				</ul>
 			</div>
@@ -44,5 +44,7 @@
 </style>
 
 <script setup>
-	const isLoggedIn = await getCurrentUser()
+	const user = await getCurrentUser();
+	const isLoggedIn = ref(user);
+
 </script>

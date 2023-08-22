@@ -1,14 +1,14 @@
 <template>
 	<div class="container">
 		<div class="col-md-6">
-			<h1>Login</h1>
+			<h1>Sign In</h1>
 			<form @submit.prevent="login">
 				<div class="mb-3">
 					<label for="email" class="form-label">Email:</label>
 					<input type="email" class="form-control" id="email" v-model="email" name="email" required>
 				</div>
 				
-				<button type="submit" class="btn btn-primary">Login</button>
+				<button type="submit" class="btn btn-primary">Continue</button>
 			</form>
 		</div>
 	</div>

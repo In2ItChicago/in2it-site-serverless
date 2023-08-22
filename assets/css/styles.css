@@ -1,0 +1,27 @@
+h1{
+	font-family:'Nunito', sans-serif;
+	font-size:42px;
+	color:#034a57;
+}
+
+p{
+	color:#034a57;
+}
+
+.form-control{
+	border-radius:0px;
+	border:2px solid #8cd6ce;
+}
+
+.form-control::placeholder{
+	color:#034a57;
+}
+
+.form-label {
+	margin-bottom:4px;
+	color:#034a57;
+}
+
+.in2it-btn-primary{
+	background-color:'#0bab9c';
+}

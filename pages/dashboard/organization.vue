@@ -9,7 +9,7 @@
 	</div>
 </template>
 
-<script src>
+<script setup>
 	definePageMeta({
 		middleware: ['auth'],
 	});

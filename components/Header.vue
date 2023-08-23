@@ -41,11 +41,11 @@
 <style>
 	.in2it-nav-link{
 		text-align: left;
-		font: Nunito;
+		font-family:'Nunito', sans-serif;
 		font-weight:500;
 		font-size:20px;
 		letter-spacing: 0px;
-		color: #034A57;
+		color: #034A57 !important;
 		opacity: 1;
 	}
 

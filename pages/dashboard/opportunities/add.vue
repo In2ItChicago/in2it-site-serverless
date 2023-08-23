@@ -272,14 +272,15 @@
 					<button type="submit" class="btn btn-primary in2it-btn submit-btn">Add Opportunity</button>
 				</form>
 			</div>
-		</div>
-	</div>
-	<div class="col-md-6" v-if="submission.state">
-		<h1>Opportunity Submitted!</h1>
-		<span>Thanks for filling out this form! IN2IT Chicago will review the submission and post it to the site ASAP. We look forward to helping participants get connected with your organization!</span>
+			<div class="col-md-6" v-else="submission.state">
+				<img src="/img/icons/check-circle-outline.svg" width="84" height="84">
+				<h1>Opportunity Added!</h1>
+				<span>Thank you for taking the time to add an opportunity!<br> We look forward to helping participants get connected with your organization!</span>
 
-		<div class="my-4">
-			<a href="/submit" type="submit" class="btn btn-primary submit-btn">Submit Another</a>
+				<div class="my-4">
+					<a href="/submit" type="submit" class="btn btn-primary in2it-btn">Submit Another</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -289,6 +290,7 @@
 		middleware: ['auth'],
 	});
 
+	import { getAuth } from "firebase/auth";
 	import { query, where, addDoc, collection } from "firebase/firestore";
 	const db = useFirestore();
 
@@ -324,6 +326,7 @@
 	};
 
 	const event = reactive({
+		orgUid:'',
 		organizationName: '',
 		mission: '',
 		opportunityName: '',
@@ -355,12 +358,15 @@
 	const submission = reactive({state: false});
 
 	let submitForm = () => {
-		console.log('we are submitting', event);
+		//Save the Firebase uid of the current org with the event data
+		const auth = getAuth();
+		event.orgUid = auth.currentUser.uid;
 
 		//Create new event document
 		addDoc(collection(db, "events"), event).then(docRef => {
 			console.log('event submitted successfully!');
 			submission.state = true;
+			scroll(0,0);
 		});
 	};
 </script>

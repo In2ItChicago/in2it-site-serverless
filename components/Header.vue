@@ -28,7 +28,7 @@
 							Account
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="/dashboard/organization">Dashboard</a></li>
+							<li><a class="dropdown-item" href="/dashboard/opportunities/list">Dashboard</a></li>
 							<li><a class="dropdown-item" href="/auth/sign-out">Sign Out</a></li>
 						</ul>
 					</li>

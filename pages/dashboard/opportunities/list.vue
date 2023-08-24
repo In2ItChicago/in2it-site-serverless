@@ -4,11 +4,14 @@
 			<Dashboard-Sidebar></Dashboard-Sidebar>
 			<div class="col py-3">
 				<h1>My Opportunities</h1>
-				<div class="container mt-5">
-					<div class="event-container mt-2 row">
-						<Dashboard-Event-Card v-for="event in events.list" :event="event">
-						</Dashboard-Event-Card>
+				<div v-if="eventData.isLoading">
+					<div class="spinner-border mt-3" role="status" style="color: #034a57; width: 100px; height: 100px;">
+						<span class="visually-hidden">Loading...</span>
 					</div>
+				</div>
+				<div class="event-container mt-2 row" v-else>
+					<Dashboard-Event-Card v-for="event in eventData.list" :event="event">
+					</Dashboard-Event-Card>
 				</div>
 			</div>
 		</div>
@@ -24,13 +27,16 @@
 		middleware: ['auth'],
 	});
 
-	const events = reactive({list: []});
+	const eventData = reactive({
+		list: [], 
+		isLoading: true
+	});
 
 	onMounted(async () => {
 		const auth = getAuth();
 		console.log('our uid is', auth.currentUser.uid);
 
-		events.list = [];
+		eventData.list = [];
 		console.log('cleared event list');
 
 		const eventsRef = collection(db, "events");
@@ -39,9 +45,11 @@
 		querySnapshot.forEach((doc) => {
 			// doc.data() is never undefined for query doc snapshots
 			console.log(doc.id, doc.data());
-			events.list.push(doc.data());
+			eventData.list.push(doc.data());
 
-			console.log('events list', events.list);
+			eventData.isLoading = false;
+
+			console.log('events list', eventData.list);
 		});
 	});
 </script>

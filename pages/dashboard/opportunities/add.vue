@@ -7,34 +7,6 @@
 
 				<form @submit.prevent="submitForm" class="needs-validation" novalidate>
 					<div class="mb-3">
-						<label for="event-name" class="form-label">Organization</label>
-						<input 
-							type="text" 
-							id="event-name" 
-							placeholder="Your organization's name"
-							v-model="event.organizationName" 
-							class="form-control" required
-						>
-						<div class="invalid-feedback">
-							Please enter your organization's name.
-						</div>
-					</div>
-
-					<div class="mb-3">
-						<label for="event-name" class="form-label">Mission</label>
-						<input 
-							type="text" 
-							id="event-name" 
-							placeholder="Your organization's mission"
-							v-model="event.mission" 
-							class="form-control" required
-						>
-						<div class="invalid-feedback">
-							Please enter your organization's mission.
-						</div>
-					</div>
-
-					<div class="mb-3">
 						<label for="event-name" class="form-label">Opportunity Name</label>
 						<input 
 							type="text" 
@@ -326,7 +298,7 @@
 	};
 
 	const event = reactive({
-		orgUid:'',
+		submitterUid:'',
 		organizationName: '',
 		mission: '',
 		opportunityName: '',
@@ -360,7 +332,7 @@
 	let submitForm = () => {
 		//Save the Firebase uid of the current org with the event data
 		const auth = getAuth();
-		event.orgUid = auth.currentUser.uid;
+		event.submitterUid = auth.currentUser.uid;
 
 		//Create new event document
 		addDoc(collection(db, "events"), event).then(docRef => {

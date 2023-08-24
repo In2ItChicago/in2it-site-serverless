@@ -46,14 +46,16 @@
 </template>
 
 <script setup>
+	import { doc, getDoc } from "firebase/firestore";
 	import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
+
+	const db = useFirestore();
 
 	const user = reactive({
 		email: ''
 	});
 
 	const signInState = reactive({
-		success: false,
 		failed: false,
 		stateMessage: '',
 		mustReEnterEmail: false
@@ -75,17 +77,17 @@
 				signInState.mustReEnterEmail = true;
 			}
 			else {
-				completeSignUp(auth, email);
+				completeSignIn(auth, email);
 			}
 		}
 	});
 
 	let submitEmail = () => {
 		const auth = getAuth();
-		completeSignUp(auth, user.email);
+		completeSignIn(auth, user.email);
 	};
 
-	let completeSignUp = (auth, email) => {
+	let completeSignIn = (auth, email) => {
 		// The client SDK will parse the code from the link for you.
 		signInWithEmailLink(auth, email, window.location.href)
 		.then((result) => {
@@ -99,9 +101,15 @@
 			// result.additionalUserInfo.isNewUser
 
 			console.log('result.user', result.user);
-			signInState.success = true;
 
-			navigateTo('/dashboard/organization');
+			navigateToOnboarding(auth, () => {
+				//If org info is already filled out
+				navigateTo('/dashboard/opportunities/list');
+			}, () => {
+				//If org info is needed
+				//This path is followed on first sign up
+				navigateTo('/dashboard/organization');
+			});
 		})
 		.catch((error) => {
 			console.log('sign in failed', error);
@@ -109,6 +117,20 @@
 			signInState.stateMessage = error.message;
 			// Some error occurred, you can inspect the code: error.code
 			// Common errors could be invalid email and invalid or expired OTPs.
+		});
+	};
+
+	let navigateToOnboarding = (auth, successCallback, failureCallback) => {
+		//We check if the org has been created, if so we call successCallback
+		//If no org created yet, we call failureCallback
+		const docRef = doc(db, 'organizations', auth.currentUser.uid);
+		const docSnap = getDoc(docRef).then((docSnap) => {
+			if (docSnap.exists()) {
+				successCallback();
+			}
+			else {
+				failureCallback();
+			}
 		});
 	};
 </script>

@@ -18,7 +18,7 @@
 						</div>
 					</div>
 					<div class="mb-3">
-						<label for="user-name" class="form-label">Name</label>
+						<label for="user-name" class="form-label">Your Name</label>
 						<input 
 							type="text" 
 							id="user-name" 

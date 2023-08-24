@@ -89,17 +89,17 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="web-address" class="form-label">Web Address</label>
+						<label for="website-link" class="form-label">Website link</label>
 						<input 
 							type="text" 
-							id="web-address" 
+							id="website-link" 
 							placeholder="The best place for updated and detailed information about this opportunity"
-							v-model="event.webAddress" 
+							v-model="event.websiteLink" 
 							class="form-control" 
 							required
 						>
 						<div class="invalid-feedback">
-							Please enter the opportunity's web address.
+							Please enter the opportunity's website link.
 						</div>
 					</div>
 
@@ -120,17 +120,17 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="location" class="form-label">Location</label>
+						<label for="address" class="form-label">Street Address</label>
 						<input 
 							type="text" 
-							id="location" 
+							id="address" 
 							placeholder="Where will this opportunity take place?"
-							v-model="event.location" 
+							v-model="event.address" 
 							class="form-control" 
 							required
 						>
 						<div class="invalid-feedback">
-							Please enter the opportunity's location.
+							Please enter the opportunity's address.
 						</div>
 					</div>
 
@@ -149,13 +149,13 @@
 					</div>
 
 					<div class="mb-3">
-						<label class="form-check-label" for="isContinual">
-							Is this a <b>isContinual</b> opportunity? (No exact start/end date)
+						<label class="form-check-label" for="isContinuous">
+							Is this a <b>continuous</b> opportunity? (No exact start/end date)
 						</label>
-						<input class="form-check-input" type="checkbox" v-model="event.isContinual" id="isContinual">
+						<input class="form-check-input" type="checkbox" v-model="event.isContinuous" id="isContinuous">
 					</div>
 
-					<div v-if="!event.isContinual">
+					<div v-if="!event.isContinuous">
 						<div class="mb-3">
 							<label for="event-start-date" class="form-label">Event Start Date & Time</label>
 							<input type="datetime-local" id="event-start-date" v-model="event.startDateTime" class="form-control" required>
@@ -278,7 +278,7 @@
 				<span>Thank you for taking the time to add an opportunity!<br> We look forward to helping participants get connected with your organization!</span>
 
 				<div class="my-4">
-					<a href="/submit" type="submit" class="btn btn-primary in2it-btn">Submit Another</a>
+					<a href="/dashboard/opportunities/add" type="submit" class="btn btn-primary in2it-btn">Add Another</a>
 				</div>
 			</div>
 		</div>
@@ -333,9 +333,9 @@
 		description: '',
 		volunteerActivities: '',
 		missionContribution: '',
-		webAddress: '',
+		websiteLink: '',
 		impactAreas: [],
-		location: '',
+		address: '',
 		isVirtual: false,
 		isHybrid: false,
 		startDateTime: '',
@@ -347,7 +347,7 @@
 		isBiweeklyRecurring: false,
 		isVariableRecurring: false,
 		numberOfOccurrences: false,
-		isContinual: false,
+		isContinuous: false,
 		accommodations: [],
 		accomodationsOther: '',
 		hasStrenuousActivity: false,

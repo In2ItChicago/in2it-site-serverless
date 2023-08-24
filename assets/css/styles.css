@@ -1,10 +1,22 @@
-h1{
+h1, h2{
 	font-family:'Nunito', sans-serif;
 	font-size:42px;
 	color:#034a57;
 }
 
-p{
+h2{
+	font-family:'Nunito', sans-serif;
+	font-size:33px;
+	color:#0bab9c;
+}
+
+h3{
+	font-family:'Nunito', sans-serif;
+	font-size:26px;
+	color:#0bab9c;
+}
+
+p, li{
 	color:#034a57;
 	font-size:16px;
 }
@@ -38,7 +50,7 @@ p{
 	height:66vh;
 	background: url('~/assets/img/home-background.png');
 	background-size:cover;
-	align-items:start;
+	align-items:flex-start;
 	justify-content:center;
 	padding-bottom:80px;
 }
@@ -51,4 +63,15 @@ p{
 	padding:20px;
 	border-radius:10px;
 	margin-top:10vh;
+}
+
+.about-background{
+	display:flex;
+	height:50vw;
+	max-height:450px;
+	background: url('~/assets/img/about-background.png');
+	background-size:cover;
+	align-items:flex-start;
+	justify-content:center;
+	padding-bottom:80px;
 }

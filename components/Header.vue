@@ -10,10 +10,10 @@
 			<div class="collapse navbar-collapse d-flex" id="navbarContent">
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link in2it-nav-link mx-2" href="#">About Us</a>
+						<a class="nav-link in2it-nav-link mx-2" href="/about">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link in2it-nav-link mx-2" href="#">Join Our Team</a>
+						<a class="nav-link in2it-nav-link mx-2" href="/join-us">Join Our Team</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-3">

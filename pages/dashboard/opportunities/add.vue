@@ -218,13 +218,13 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="event-accomodations" class="form-label">Are there options for people who need the following accommodations? (Check all that apply)</label>
+						<label for="event-accommodations" class="form-label">Are there options for people who need the following accommodations? (Check all that apply)</label>
 						<ul>
-							<li v-for="accomodation in accomodations.items" :key="accomodation.id" class="no-bullets">
+							<li v-for="accomodation in accommodations.items" :key="accomodation.id" class="no-bullets">
 								<label>
 									<input
 										type="checkbox"
-										v-model="event.accomodations"
+										v-model="event.accommodations"
 										:value="accomodation.id"
 										/>
 										{{ accomodation.name }}
@@ -314,7 +314,7 @@
 		]
 	};
 
-	const accomodations = {
+	const accommodations = {
 		items: [
 			{id: 'translation', name: 'Translation'},
 			{id: 'signLanguage', name: 'Sign Language'},
@@ -348,7 +348,7 @@
 		isVariableRecurring: false,
 		numberOfOccurrences: false,
 		isContinual: false,
-		accomodations: [],
+		accommodations: [],
 		accomodationsOther: '',
 		hasStrenuousActivity: false,
 		strenuousActivityDescription: '',

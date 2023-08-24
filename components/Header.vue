@@ -10,7 +10,7 @@
 			<div class="collapse navbar-collapse d-flex" id="navbarContent">
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link in2it-nav-link mx-2" href="/about">About Us</a>
+						<a class="nav-link in2it-nav-link mx-2" href="/about-us">About Us</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link in2it-nav-link mx-2" href="/join-us">Join Our Team</a>

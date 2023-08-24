@@ -3,12 +3,12 @@
 		<div class="container flex-fill">
 			<div class="row">
 				<div class="col d-flex flex-column mt-3">
-					<a href="#" class="footer-underlined-link">For Organizers</a>
-					<a href="#" class="footer-underlined-link">How to Post an Event</a>
+					<a href="/become-an-organizer" class="footer-underlined-link">For Organizers</a>
+					<a href="/add-an-opportunity" class="footer-underlined-link">How to Post an Event</a>
 				</div>
 				<div class="col d-flex flex-column align-items-end mt-3">
-					<a href="#" class="footer-underlined-link">Provide Feedback</a>
-					<a href="#" class="footer-underlined-link">Contact Us</a>
+					<a href="/join-us" class="footer-underlined-link">Provide Feedback</a>
+					<a href="mailto:in2itchicago@gmail.com" class="footer-underlined-link">Contact Us</a>
 				</div>
 			</div>
 		</div>
@@ -25,9 +25,9 @@
 			<div class="row">
 				<div class="col d-flex flex-row justify-content-center justify-content-sm-start mt-sm-4 mt-md-5">
 					<p class="footer-link me-5 d-none d-sm-block">© 2023 IN2IT</p> <!-- Hidden on xs screens -->
-					<a href="#" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Terms of Use</a>
-					<a href="#" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Privacy Policy</a>
-					<a href="#" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Accessibility</a>
+					<a href="/terms-of-use" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Terms of Use</a>
+					<a href="/privacy-policy" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Privacy Policy</a>
+					<a href="/accessibility" class="footer-link me-5 d-flex justify-content-center justify-content-md-start text-center text-md-left">Accessibility</a>
 				</div>
 
 				<!-- Visible on sm screens and bigger -->

@@ -8,7 +8,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 	if (!user) {
 		console.log('no user');
 		return navigateTo({
-			path: '/auth/login',
+			path: '/auth/sign-in',
 			query: {
 				redirect: to.fullPath,
 			},

@@ -39,10 +39,25 @@ p, li, label{
 	background-color: #0bab9c;
 	border:none;
 	border-radius:0px;
+	color:#fff;
 }
 
 .in2it-btn:hover, .in2it-btn:focus, .in2it-btn:active{
 	background-color:#0e857a !important;
+	color:#fff;
+}
+
+.in2it-btn-secondary{
+	background-color:#fff;
+	border:1px solid #0bab9c;
+	border-radius:0px;
+	box-sizing: border-box;
+	color:#0bab9c;
+}
+
+.in2it-btn-secondary:hover, .in2it-btn-secondary:focus, .in2it-btn-secondary:active{
+	color:#0E857A;
+	border:1px solid #0E857A;
 }
 
 .in2it-home-background{

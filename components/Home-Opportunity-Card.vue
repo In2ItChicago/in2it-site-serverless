@@ -28,7 +28,7 @@
 					<span v-if="opportunity.isVirtual">Virtual</span>
 				</div>
 
-				<a href="#" class="btn btn-primary learn-more-button mt-2">Learn More</a>
+				<a :href="'/opportunities/view/' + opportunity.documentId" class="btn btn-primary learn-more-button mt-2">Learn More</a>
 			</div>
 		</div>
 	</div>

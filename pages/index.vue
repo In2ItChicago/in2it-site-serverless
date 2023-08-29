@@ -10,12 +10,12 @@
 	<div class="container mt-5">
 		<h2 class="page-title">Featured Events</h2>
 		<div class="featured-event-container mt-2 row">
-			<Front-End-Opportunity-Card v-for="opportunity in opportunityData.list" :opportunity="opportunity"></Front-End-Opportunity-Card>
+			<Home-Opportunity-Card v-for="opportunity in opportunityData.list" :opportunity="opportunity"></Home-Opportunity-Card>
 		</div>
 
 		<div class="row d-flex">
 			<div class="col d-flex justify-content-end">
-				<a class="view-all-events-link" href="#">View All Events &rarr;</a>
+				<a class="view-all-events-link" href="/opportunities">View All Events &rarr;</a>
 			</div>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 	<div class="in2it-overlay-form">
 		<h1 class="in2it-heading">Find Opportunities</h1>
 
-		<form class="row gx-3 gy-2 align-items-center in2it-form">
+		<div class="row gx-3 gy-2 align-items-center in2it-form">
 			<div class="col-auto">
 				<input id="startDate" class="form-control" type="date"/>
 				<span id="startDateSelected"></span>
@@ -29,7 +29,7 @@
 				<label class="visually-hidden" for="searchTerms">Search Terms</label>
 				<div class="input-group">
 					<input type="text" class="form-control" id="searchTerms" placeholder="Enter search terms">
-					<button type="submit" class="btn btn-primary in2it-form-button">Search</button>
+					<button @click="search" class="btn btn-primary in2it-form-button">Search</button>
 				</div>
 			</div>
 			
@@ -41,9 +41,16 @@
 					</label>
 				</div>
 			</div>
-		</form>
+		</div>
 	</div>
 </template>
+
+<script setup>
+	const search = () => {
+		console.log('clicked search');
+		navigateTo('/opportunities');
+	};
+</script>
 
 <style>
 	.in2it-label{
@@ -85,8 +92,13 @@
 	.in2it-form-button{
 		border-radius:0px;
 		background-color:#0BAB9C;
+		opacity:1.0;
 		color:#fff;
 		font-size:16px;
 		border: 1px solid #0BAB9C;
+	}
+
+	.in2it-form-button:hover, .in2it-form-button:active, .in2it-form-button:focus{
+		background-color:#0a5850;
 	}
 </style>

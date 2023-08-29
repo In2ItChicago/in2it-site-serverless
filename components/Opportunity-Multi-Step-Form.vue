@@ -10,20 +10,22 @@
 		</div>
 	</div>
 	<div>
-		<div id="steps-container">
+		<div class="d-flex" id="steps-container">
 			<div class="step" v-if="steps.current == 0">
 				<h2>1. Tell us about this opportunity</h2>
-				<label for="opportunity-name" class="form-label">Opportunity Name</label>
-				<input 
-					type="text" 
-					id="opportunity-name" 
-					placeholder="Name of this opportunity"
-					v-model="opportunity.opportunityName" 
-					class="form-control" 
-					required
-				>
-				<div class="invalid-feedback">
-					Please enter the opportunity's name.
+				<div class="mb-3">
+					<label for="opportunity-name" class="form-label">Opportunity Name</label>
+					<input 
+						type="text" 
+						id="opportunity-name" 
+						placeholder="Name of this opportunity"
+						v-model="opportunity.opportunityName" 
+						class="form-control" 
+						required
+					>
+					<div class="invalid-feedback">
+						Please enter the opportunity's name.
+					</div>
 				</div>
 
 				<div class="mb-3">
@@ -51,6 +53,32 @@
 						required></textarea>
 					<div class="invalid-feedback">
 						Please enter a description of this opportunity.
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<div class="d-flex flex-column">
+						<label class="form-label">Featured thumbnail</label>
+						<img 
+							:src="opportunity.thumbnailId ? '/img/impact-area-' + opportunity.thumbnailId + '.png' : '/img/impact-area-nature-conservation.png'" 
+							class="img-thumbnail showcase-thumbnail" 
+							:alt="opportunity.thumbnailId"
+						>
+					</div>
+				</div>
+
+				<div class="mb-5">
+					<label class="form-label">Select an alternative thumbnail for this opportunity</label>
+					<div v-for="thumbnail in thumbnails">
+						<img 
+							:src="thumbnail.src" 
+							:id="thumbnail.alt"
+							:class="[thumbnail.alt == opportunity.thumbnailId ? 
+								'img-thumbnail rounded float-start opportunity-thumbnail thumbnail-selected' :
+								'img-thumbnail rounded float-start opportunity-thumbnail']" 
+							:alt="thumbnail.alt"
+							@click="selectThumbnail"
+						>
 					</div>
 				</div>
 			</div>
@@ -254,32 +282,34 @@
 				</div>
 			</div>
 		</div>
-		<button 
-			class="btn btn-lg in2it-btn-secondary"
-			@click="prevStep"
-			v-if="steps.current > 0"
-			style="margin-right:2px; height:46px;">
-			Prev
-		</button>
-		<button 
-			class="btn btn-lg in2it-btn"
-			v-if="steps.current < steps.maxSteps - 1"
-			@click="nextStep">
-			Next
-		</button>
-		<button 
-			tpye="submit"
-			class="btn btn-lg in2it-btn"
-			v-if="steps.current == steps.maxSteps - 1"
-			@click="submitForm">
-			Submit Opportunity
-		</button>
+		<div class="mt-2">
+			<button 
+				class="btn btn-lg in2it-btn-secondary"
+				@click="prevStep"
+				v-if="steps.current > 0"
+				style="margin-right:2px; height:46px;">
+				Back
+			</button>
+			<button 
+				class="btn btn-lg in2it-btn"
+				v-if="steps.current < steps.maxSteps - 1"
+				@click="nextStep">
+				Next
+			</button>
+			<button 
+				tpye="submit"
+				class="btn btn-lg in2it-btn"
+				v-if="steps.current == steps.maxSteps - 1"
+				@click="submitForm">
+				Submit Opportunity
+			</button>
+		</div>
 	</div>
 </template>
 
 <script setup>
 	import { getAuth } from "firebase/auth";
-	import { addDoc, collection } from "firebase/firestore";
+	import { addDoc, collection, documentId } from "firebase/firestore";
 	const db = useFirestore();
 
 	const props = defineProps({
@@ -325,6 +355,22 @@
 		});
 	};
 
+	let selectThumbnail = (e) => {
+		opportunity.thumbnailId = e.srcElement.id;
+	};
+
+	const thumbnails = [
+		{alt: 'animals', src: '/img/impact-area-animals.png'},
+		{alt: 'arts-culture', src: '/img/impact-area-arts-culture.png'},
+		{alt: 'food-hunger', src: '/img/impact-area-food-hunger.png'},
+		{alt: 'nature-conservation', src: '/img/impact-area-nature-conservation.png'},
+		{alt: 'technology', src: '/img/impact-area-technology.png'},
+		{alt: 'civics-voting', src: '/img/impact-area-civics-voting.png'},
+		{alt: 'immigration', src: '/img/impact-area-immigration.png'},
+		{alt: 'justice-incarceration', src: '/img/impact-area-justice-incarceration.png'},
+		{alt: 'youth', src: '/img/impact-area-youth.png'}
+	];
+
 	const impactAreas = {
 		items: [
 			{id: 'animalsPets', name: 'Animals and Pets'},
@@ -357,3 +403,25 @@
 	};
 
 </script>
+
+<style>
+	.opportunity-thumbnail{
+		width:139px;
+		height:92px;
+		cursor:pointer;
+	}
+
+	.opportunity-thumbnail:hover{
+		opacity:0.7;
+	}
+
+	.opportunity-thumbnail.thumbnail-selected{
+		border: 4px solid #ec8a00;
+		border-radius:8px;
+	}
+
+	.showcase-thumbnail{
+		width:278px;
+		height:184px;
+	}
+</style>

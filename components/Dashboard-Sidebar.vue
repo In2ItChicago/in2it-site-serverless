@@ -14,7 +14,7 @@
 				</li>
 				<li class="nav-item in2it-sidebar-nav">
 					<a href="/dashboard/opportunities/add" class="nav-link px-0 align-middle">
-						<i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add Opportunity</span> </a>
+						<i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Add New Opportunity</span> </a>
 				</li>
 			</ul>
 			<hr>

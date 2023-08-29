@@ -3,7 +3,7 @@
 		<div class="row flex-nowrap">
 			<Dashboard-Sidebar></Dashboard-Sidebar>
 			<div class="col-md-6 py-3" v-if="!opportunity.wasSuccessfullySubmitted">
-				<h1>Add an Opportunity</h1>
+				<h1>Add a New Opportunity</h1>
 				<OpportunityMultiStepForm :opportunity="opportunity" @success="saveSubmission"></OpportunityMultiStepForm>
 			</div>
 			<div class="col-md-6" v-else-if="opportunity.wasSuccessfullySubmitted">
@@ -30,6 +30,7 @@
 		mission: '',
 		opportunityName: '',
 		description: '',
+		thumbnailId: '',
 		volunteerActivities: '',
 		missionContribution: '',
 		websiteLink: '',

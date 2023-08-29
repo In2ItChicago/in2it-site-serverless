@@ -99,9 +99,7 @@
 		'/img/impact-area-food-hunger.png',
 		'/img/impact-area-nature-conservation.png',
 		'/img/impact-area-technology.png',
-
 		'/img/impact-area-civics-voting.png',
-		'/img/impact-area-food-hunger.png',
 		'/img/impact-area-immigration.png',
 		'/img/impact-area-justice-incarceration.png',
 		'/img/impact-area-nature-conservation.png',

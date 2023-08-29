@@ -1,14 +1,14 @@
 <template>
 	<div class="col-sm-12 col-md-6 col-lg-3">
-		<div class="card my-3 event-card">
-			<img :src="randomSrc()" class="card-img-top featured-event-image img-fluid" alt="featured-event">
+		<div class="card my-3 opportunity-card">
+			<img :src="randomSrc()" class="card-img-top featured-opportunity-image img-fluid" alt="featured-opportunity">
 			<div class="card-img-overlay p-0" style="height:160px;">
 				<h5 class="card-date-overlay">Apr 16</h5>
 			</div>
 			
 			<div class="card-body">
 				<h5 class="card-title">
-					{{ event.opportunityName }}
+					{{ opportunity.opportunityName }}
 				</h5>
 
 				<p class="organization-name">
@@ -16,15 +16,15 @@
 				</p>
 
 				<p class="card-text">
-					{{ event.description }}
+					{{ opportunity.description }}
 				</p>
 
-				<p class="event-time">
+				<p class="opportunity-time">
 					Tuesday, 7:00pm
 				</p>
 
-				<div class="event-icons d-flex flex-row">
-					<span>Ongoing Event</span>
+				<div class="opportunity-icons d-flex flex-row">
+					<span>Ongoing Opportunity</span>
 					<span>Virtual</span>
 				</div>
 
@@ -51,12 +51,12 @@
 		background-color:#0a5850;
 	}
 
-	.event-card{
+	.opportunity-card{
 		border-radius:0px;
-		filter:drop-shadow(0px 4px 4px #00000040)
+		filter:drop-shadow(0px 4px 4px #00000040);
 	}
 
-	.featured-event-image{
+	.featured-opportunity-image{
 		width:auto;
 		max-height:100%;
 		border-radius:0px;
@@ -83,13 +83,13 @@
 		font: normal normal bold 16px/22px Nunito;
 	}
 
-	.event-time{
+	.opportunity-time{
 		font-size: 16px;
 		color: #034A57;
 		font: normal normal bold 16px/22px Nunito;
 	}
 
-	.event-icons{
+	.opportunity-icons{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -98,13 +98,13 @@
 
 <script setup>
 	const props = defineProps({
-		event: {
+		opportunity: {
 			type: Object,
 			required: true
 		}
 	});
 
-	const { event } = props;
+	const { opportunity } = props;
 
 	const imagePaths = [
 		'/img/impact-area-animals.png',

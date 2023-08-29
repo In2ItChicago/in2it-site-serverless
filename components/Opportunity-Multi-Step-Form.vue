@@ -19,7 +19,7 @@
 						type="text" 
 						id="opportunity-name" 
 						placeholder="Name of this opportunity"
-						v-model="opportunity.opportunityName" 
+						v-model="data.opportunity.opportunityName" 
 						class="form-control" 
 						required
 					>
@@ -34,7 +34,7 @@
 						type="text" 
 						id="website-link" 
 						placeholder="The best place for updated and detailed information about this opportunity"
-						v-model="opportunity.websiteLink" 
+						v-model="data.opportunity.websiteLink" 
 						class="form-control" 
 						required
 					>
@@ -48,11 +48,11 @@
 					<textarea 
 						id="opportunity-description" 
 						placeholder="A brief description of this opportunity" 
-						v-model="opportunity.description" 
+						v-model="data.opportunity.description" 
 						class="form-control" 
 						required></textarea>
 					<div class="invalid-feedback">
-						Please enter a description of this opportunity.
+						Please enter a description of this data.opportunity.
 					</div>
 				</div>
 
@@ -60,9 +60,9 @@
 					<div class="d-flex flex-column">
 						<label class="form-label">Featured thumbnail</label>
 						<img 
-							:src="opportunity.thumbnailId ? '/img/impact-area-' + opportunity.thumbnailId + '.png' : '/img/impact-area-nature-conservation.png'" 
+							:src="data.opportunity.thumbnailId ? '/img/impact-area-' + data.opportunity.thumbnailId + '.png' : '/img/impact-area-nature-conservation.png'" 
 							class="img-thumbnail showcase-thumbnail" 
-							:alt="opportunity.thumbnailId"
+							:alt="data.opportunity.thumbnailId"
 						>
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 						<img 
 							:src="thumbnail.src" 
 							:id="thumbnail.alt"
-							:class="[thumbnail.alt == opportunity.thumbnailId ? 
+							:class="[thumbnail.alt == data.opportunity.thumbnailId ? 
 								'img-thumbnail rounded float-start opportunity-thumbnail thumbnail-selected' :
 								'img-thumbnail rounded float-start opportunity-thumbnail']" 
 							:alt="thumbnail.alt"
@@ -89,11 +89,11 @@
 					<textarea 
 						id="opportunity-activities" 
 						placeholder="What will volunteers be doing? Please list any skills that are required." 
-						v-model="opportunity.volunteerActivities" 
+						v-model="data.opportunity.volunteerActivities" 
 						class="form-control" 
 						required></textarea>
 					<div class="invalid-feedback">
-						Please enter the skills and activities of this opportunity.
+						Please enter the skills and activities of this data.opportunity.
 					</div>
 				</div>
 
@@ -102,7 +102,7 @@
 					<textarea 
 						id="participation-mission" 
 						placeholder="How does participation contribute to your organization's mission?"
-						v-model="opportunity.missionContribution" 
+						v-model="data.opportunity.missionContribution" 
 						class="form-control" 
 						required></textarea>
 					<div class="invalid-feedback">
@@ -116,7 +116,7 @@
 							<label>
 								<input
 									type="checkbox"
-									v-model="opportunity.impactAreas"
+									v-model="data.opportunity.impactAreas"
 									:value="area.id"
 									/>
 									{{ area.name }}
@@ -133,7 +133,7 @@
 						type="text" 
 						id="address" 
 						placeholder="Where will this opportunity take place?"
-						v-model="opportunity.address" 
+						v-model="data.opportunity.address" 
 						class="form-control" 
 						required
 					>
@@ -146,14 +146,14 @@
 					<label class="form-check-label" for="isVirtual">
 						Is this a virtual opportunity?
 					</label>
-					<input class="form-check-input" type="checkbox" v-model="opportunity.isVirtual" id="isVirtual">
+					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isVirtual" id="isVirtual">
 				</div>
 
 				<div class="mb-3">
 					<label class="form-check-label" for="isHybrid">
 						Is this a hybrid opportunity? (Remote and in person)
 					</label>
-					<input class="form-check-input" type="checkbox" v-model="opportunity.isHybrid" id="isHybrid">
+					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isHybrid" id="isHybrid">
 				</div>
 			</div>
 			<div class="step" v-else-if="steps.current == 3">
@@ -162,13 +162,13 @@
 					<label class="form-check-label" for="isContinuous">
 						Is this a <b>continuous</b> opportunity? (No exact start/end date)
 					</label>
-					<input class="form-check-input" type="checkbox" v-model="opportunity.isContinuous" id="isContinuous">
+					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isContinuous" id="isContinuous">
 				</div>
 
-				<div v-if="!opportunity.isContinuous">
+				<div v-if="!data.opportunity.isContinuous">
 					<div class="mb-3">
 						<label for="event-start-date" class="form-label">Event Start Date & Time</label>
-						<input type="datetime-local" id="event-start-date" v-model="opportunity.startDateTime" class="form-control" required>
+						<input type="datetime-local" id="event-start-date" v-model="data.opportunity.startDateTime" class="form-control" required>
 						<div class="invalid-feedback">
 							Please enter a valid event date.
 						</div>
@@ -178,12 +178,12 @@
 						<label class="form-check-label" for="isMultiDay">
 							Is this a <b>multi-day</b> opportunity?
 						</label>
-						<input class="form-check-input" type="checkbox" v-model="opportunity.isMultiDay" id="isMultiDay">
+						<input class="form-check-input" type="checkbox" v-model="data.opportunity.isMultiDay" id="isMultiDay">
 					</div>
 
-					<div v-if="opportunity.isMultiDay" class="mb-3">
+					<div v-if="data.opportunity.isMultiDay" class="mb-3">
 						<label for="event-end-date" class="form-label">Event End Date</label>
-						<input type="datetime-local" id="event-end-date" v-model="opportunity.endDateTime" class="form-control" required>
+						<input type="datetime-local" id="event-end-date" v-model="data.opportunity.endDateTime" class="form-control" required>
 						<div class="invalid-feedback">
 							Please enter a valid event date.
 						</div>
@@ -193,36 +193,36 @@
 						<label class="form-check-label" for="isRecurring">
 							Is this a <b>recurring</b> opportunity?
 						</label>
-						<input class="form-check-input" type="checkbox" v-model="opportunity.isRecurring" id="isRecurring">
+						<input class="form-check-input" type="checkbox" v-model="data.opportunity.isRecurring" id="isRecurring">
 					</div>
 
-					<div v-if="opportunity.isRecurring">
+					<div v-if="data.opportunity.isRecurring">
 						<div class="mb-3">
 							<label class="form-check-label" for="isWeeklyRecurring">
 								This opportunity reoccurs at the same time every week?
 							</label>
-							<input class="form-check-input" type="checkbox" v-model="opportunity.isWeeklyRecurring" id="isWeeklyRecurring">
+							<input class="form-check-input" type="checkbox" v-model="data.opportunity.isWeeklyRecurring" id="isWeeklyRecurring">
 						</div>
 
 						<div class="mb-3">
 							<label class="form-check-label" for="isMonthlyRecurring">
 								This opportunity reoccurs monthly?
 							</label>
-							<input class="form-check-input" type="checkbox" v-model="opportunity.isMonthlyRecurring" id="isMonthlyRecurring">
+							<input class="form-check-input" type="checkbox" v-model="data.opportunity.isMonthlyRecurring" id="isMonthlyRecurring">
 						</div>
 
 						<div class="mb-3">
 							<label class="form-check-label" for="isBiweeklyRecurring">
 								This opportunity reoccurs biweekly (every other week)?
 							</label>
-							<input class="form-check-input" type="checkbox" v-model="opportunity.isBiweeklyRecurring" id="isBiweeklyRecurring">
+							<input class="form-check-input" type="checkbox" v-model="data.opportunity.isBiweeklyRecurring" id="isBiweeklyRecurring">
 						</div>
 
 						<div class="mb-3">
 							<label class="form-check-label" for="numberOfOccurrences">
 								Enter the number of occurrences
 							</label>
-							<input class="form-control" type="number" v-model="opportunity.numberOfOccurrences" id="numberOfOccurrences">
+							<input class="form-control" type="number" v-model="data.opportunity.numberOfOccurrences" id="numberOfOccurrences">
 						</div>
 					</div>
 				</div>
@@ -236,7 +236,7 @@
 							<label>
 								<input
 									type="checkbox"
-									v-model="opportunity.accommodations"
+									v-model="data.opportunity.accommodations"
 									:value="accomodation.id"
 									/>
 									{{ accomodation.name }}
@@ -251,7 +251,7 @@
 						type="text" 
 						id="otherAccomodations" 
 						placeholder="Please specify"
-						v-model="opportunity.accomodationsOther" 
+						v-model="data.opportunity.accomodationsOther" 
 						class="form-control"
 					>
 				</div>
@@ -260,15 +260,15 @@
 					<label class="form-check-label" for="hasStrenuousActivity">
 						Will participants be required to perform any strenuous physical activities?
 					</label>
-					<input class="form-check-input" type="checkbox" v-model="opportunity.hasStrenuousActivity" id="hasStrenuousActivity">
+					<input class="form-check-input" type="checkbox" v-model="data.opportunity.hasStrenuousActivity" id="hasStrenuousActivity">
 				</div>
 
-				<div v-if="opportunity.hasStrenuousActivity" class="mb-3">
+				<div v-if="data.opportunity.hasStrenuousActivity" class="mb-3">
 					<label for="strenuousActivityDetails" class="form-label">Please describe any strenuous physical activities:</label>
 					<textarea 
 						id="strenuousActivityDetails" 
 						placeholder="Please enter a brief description of any activities which might require significant physical effort. Ex. lifting heavy objects (over 30lbs), lots of walking, etc"
-						v-model="opportunity.strenuousActivityDescription" 
+						v-model="data.opportunity.strenuousActivityDescription" 
 						class="form-control"></textarea>
 				</div>
 
@@ -277,7 +277,7 @@
 					<textarea 
 						id="additionalInformation" 
 						placeholder="Please enter any important information that has not yet been addressed"
-						v-model="opportunity.additionalInformation" 
+						v-model="data.opportunity.additionalInformation" 
 						class="form-control"></textarea>
 				</div>
 			</div>
@@ -296,31 +296,37 @@
 				@click="nextStep">
 				Next
 			</button>
-			<button 
-				tpye="submit"
-				class="btn btn-lg in2it-btn"
-				v-if="steps.current == steps.maxSteps - 1"
-				@click="submitForm">
-				Submit Opportunity
-			</button>
+			<div v-if="data.method == 'add'">
+				<button 
+					type="submit"
+					class="btn btn-lg in2it-btn mt-2"
+					v-if="steps.current == steps.maxSteps - 1"
+					@click="submitForm">
+					Submit Opportunity
+				</button>
+			</div>
+			<div v-if="data.method == 'edit'">
+				<button 
+					type="submit"
+					class="btn btn-lg in2it-btn mt-2"
+					@click="submitForm">
+					Save Opportunity
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	import { getAuth } from "firebase/auth";
-	import { addDoc, collection, documentId } from "firebase/firestore";
-	const db = useFirestore();
-
 	const props = defineProps({
-		opportunity: {
+		data: {
 			type: Object,
 			required: true
 		}
 	});
 
-	const { opportunity } = props;
-	const emit = defineEmits(['success']);
+	const { data } = props;
+	const emit = defineEmits(['submit']);
 	const steps = reactive({current: 0, maxSteps: 5});
 	const progress = reactive({percentage: 0, barStyle: 'width:0%;'});
 
@@ -343,20 +349,11 @@
 	};
 
 	let submitForm = () => {
-		//Save the Firebase uid of the current org with the opportunity data
-		const auth = getAuth();
-		opportunity.submitterUid = auth.currentUser.uid;
-
-		//Create new opportunity document
-		addDoc(collection(db, "opportunities"), opportunity).then(docRef => {
-			console.log('opportunity submitted successfully!');
-			scroll(0,0);
-			emit('success');
-		});
+		emit('submit');
 	};
 
 	let selectThumbnail = (e) => {
-		opportunity.thumbnailId = e.srcElement.id;
+		data.opportunity.thumbnailId = e.srcElement.id;
 	};
 
 	const thumbnails = [
@@ -387,7 +384,6 @@
 			{id: 'deniors', name: 'Seniors'},
 			{id: 'technology', name: 'Technology'},
 			{id: 'youth', name: 'Youth'}
-
 		]
 	};
 

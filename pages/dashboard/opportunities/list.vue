@@ -54,7 +54,9 @@
 		const q = query(opportunitiesRef, where("submitterUid", "==", auth.currentUser.uid));
 		const querySnapshot = await getDocs(q);
 		querySnapshot.forEach((doc) => {
-			opportunityData.list.push(doc.data());
+			let data = doc.data();
+			data.documentId = doc.id;
+			opportunityData.list.push(data);
 
 			opportunityData.isLoading = false;
 		});

@@ -1,9 +1,9 @@
 <template>
 	<div class="col-sm-12 col-md-6 col-lg-3">
 		<div class="card my-3 opportunity-card">
-			<img :src="randomSrc()" class="card-img-top featured-opportunity-image img-fluid" alt="featured-opportunity">
-			<div class="card-img-overlay p-0" style="height:160px;">
-				<h5 class="card-date-overlay">Apr 16</h5>
+			<img :src="'/img/impact-area-' + opportunity.thumbnailId + '.png'" class="card-img-top featured-opportunity-image img-fluid" alt="featured-opportunity">
+			<div class="card-img-overlay p-0" style="height:160px;" v-if="opportunity.startDateTime">
+				<h5 class="card-date-overlay">{{ overlayDate }}</h5>
 			</div>
 			
 			<div class="card-body">
@@ -12,27 +12,66 @@
 				</h5>
 
 				<p class="organization-name">
-					Organization Name
+					{{ organization.name }}
 				</p>
 
 				<p class="card-text">
 					{{ opportunity.description }}
 				</p>
 
-				<p class="opportunity-time">
-					Tuesday, 7:00pm
+				<p class="opportunity-time" v-if="opportunity.startDateTime">
+					{{ weekDayTime }}
 				</p>
 
 				<div class="opportunity-icons d-flex flex-row">
-					<span>Ongoing Opportunity</span>
-					<span>Virtual</span>
+					<span v-if="opportunity.isContinuous">Ongoing Opportunity</span>
+					<span v-if="opportunity.isVirtual">Virtual</span>
 				</div>
 
-				<a href="#" class="btn btn-primary learn-more-button mt-2">Edit</a>
+				<a :href="'/dashboard/opportunities/edit/' + opportunity.documentId" class="btn btn-primary learn-more-button mt-2">Edit</a>
 			</div>
 		</div>
 	</div>
 </template>
+
+<script setup>
+	import { doc, getDoc } from 'firebase/firestore';
+	const db = useFirestore();
+
+	const props = defineProps({
+		opportunity: {
+			type: Object,
+			required: true
+		}
+	});
+
+	const { opportunity } = props;
+	let organization = reactive({});
+
+	const overlayDate = computed(() => {
+		const date = new Date(opportunity.startDateTime);
+		const options = { day: 'numeric', month: 'short' };
+		return date.toLocaleString('en-US', options);
+	});
+
+	const weekDayTime = computed(() => {
+		const date = new Date(opportunity.startDateTime);
+		const options = {
+			weekday: 'long',
+			hour: 'numeric',
+			minute: 'numeric',
+			hour12: true
+		};
+		return date.toLocaleString('en-US', options);
+	});
+
+	const docRef = doc(db, "organizations", opportunity.submitterUid);
+	const docSnap = await getDoc(docRef);
+	
+	if (docSnap.exists()) {
+		organization = docSnap.data();
+	}
+</script>
 
 <style>
 	.learn-more-button{
@@ -95,33 +134,3 @@
 		justify-content: space-between;
 	}
 </style>
-
-<script setup>
-	const props = defineProps({
-		opportunity: {
-			type: Object,
-			required: true
-		}
-	});
-
-	const { opportunity } = props;
-
-	const imagePaths = [
-		'/img/impact-area-animals.png',
-		'/img/impact-area-arts-culture.png',
-		'/img/impact-area-food-hunger.png',
-		'/img/impact-area-nature-conservation.png',
-		'/img/impact-area-technology.png',
-
-		'/img/impact-area-civics-voting.png',
-		'/img/impact-area-food-hunger.png',
-		'/img/impact-area-immigration.png',
-		'/img/impact-area-justice-incarceration.png',
-		'/img/impact-area-nature-conservation.png',
-		'/img/impact-area-youth.png'
-	];
-
-	const randomSrc = () => {
-		return imagePaths[Math.floor(Math.random() * imagePaths.length)];
-	};
-</script>

@@ -64,7 +64,7 @@
 
 <script setup>
 	import { getAuth } from "firebase/auth";
-	import { doc, getDoc, setDoc, collection, query, where, or } from "firebase/firestore";
+	import { doc, getDoc, setDoc} from "firebase/firestore";
 	const db = useFirestore();
 
 	definePageMeta({
@@ -93,8 +93,8 @@
 			organization.name = data.name;
 			organization.mission = data.mission;
 			organization.website = data.website;
-			organization.isLoading = false;
 		}
+		organization.isLoading = false;
 	});
 
 	const submitForm = async () => {

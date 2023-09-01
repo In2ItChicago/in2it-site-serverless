@@ -83,81 +83,7 @@
 				</div>
 			</div>
 			<div class="step" v-else-if="steps.current == 1">
-				<h2>2. What do volunteers need to know?</h2>
-				<div class="mb-3">
-					<label for="opportunity-activities" class="form-label">Volunteer Activities</label>
-					<textarea 
-						id="opportunity-activities" 
-						placeholder="What will volunteers be doing? Please list any skills that are required." 
-						v-model="data.opportunity.volunteerActivities" 
-						class="form-control" 
-						required></textarea>
-					<div class="invalid-feedback">
-						Please enter the skills and activities of this data.opportunity.
-					</div>
-				</div>
-
-				<div class="mb-3">
-					<label for="participation-mission" class="form-label">Participation & Mission</label>
-					<textarea 
-						id="participation-mission" 
-						placeholder="How does participation contribute to your organization's mission?"
-						v-model="data.opportunity.missionContribution" 
-						class="form-control" 
-						required></textarea>
-					<div class="invalid-feedback">
-						Please enter the participation & mission.
-					</div>
-				</div>
-				<div class="mb-3">
-					<label for="opportunity-impact-areas" class="form-label">Impact Areas</label>
-					<ul>
-						<li v-for="area in impactAreas.items" :key="area.id" class="no-bullets">
-							<label>
-								<input
-									type="checkbox"
-									v-model="data.opportunity.impactAreas"
-									:value="area.id"
-									/>
-									{{ area.name }}
-							</label>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="step" v-else-if="steps.current == 2">
-				<h2>3. Where is it?</h2>
-				<div class="mb-3">
-				<label for="address" class="form-label">Street Address</label>
-					<input 
-						type="text" 
-						id="address" 
-						placeholder="Where will this opportunity take place?"
-						v-model="data.opportunity.address" 
-						class="form-control" 
-						required
-					>
-					<div class="invalid-feedback">
-						Please enter the opportunity's address.
-					</div>
-				</div>
-
-				<div class="mb-3">
-					<label class="form-check-label" for="isVirtual">
-						Is this a virtual opportunity?
-					</label>
-					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isVirtual" id="isVirtual">
-				</div>
-
-				<div class="mb-3">
-					<label class="form-check-label" for="isHybrid">
-						Is this a hybrid opportunity? (Remote and in person)
-					</label>
-					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isHybrid" id="isHybrid">
-				</div>
-			</div>
-			<div class="step" v-else-if="steps.current == 3">
-				<h2>4. When is it?</h2>
+				<h2>2. When is it?</h2>
 				<div class="mb-3">
 					<label class="form-check-label" for="isContinuous">
 						Is this a <b>continuous</b> opportunity? (No exact start/end date)
@@ -225,6 +151,80 @@
 							<input class="form-control" type="number" v-model="data.opportunity.numberOfOccurrences" id="numberOfOccurrences">
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="step" v-else-if="steps.current == 2">
+				<h2>3. What do volunteers need to know?</h2>
+				<div class="mb-3">
+					<label for="opportunity-activities" class="form-label">Volunteer Activities</label>
+					<textarea 
+						id="opportunity-activities" 
+						placeholder="What will volunteers be doing? Please list any skills that are required." 
+						v-model="data.opportunity.volunteerActivities" 
+						class="form-control" 
+						required></textarea>
+					<div class="invalid-feedback">
+						Please enter the skills and activities of this data.opportunity.
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="participation-mission" class="form-label">Participation & Mission</label>
+					<textarea 
+						id="participation-mission" 
+						placeholder="How does participation contribute to your organization's mission?"
+						v-model="data.opportunity.missionContribution" 
+						class="form-control" 
+						required></textarea>
+					<div class="invalid-feedback">
+						Please enter the participation & mission.
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="opportunity-impact-areas" class="form-label">Impact Areas</label>
+					<ul>
+						<li v-for="area in impactAreas.items" :key="area.id" class="no-bullets">
+							<label>
+								<input
+									type="checkbox"
+									v-model="data.opportunity.impactAreas"
+									:value="area.id"
+									/>
+									{{ area.name }}
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="step" v-else-if="steps.current == 3">
+				<h2>4. Where is it?</h2>
+				<div class="mb-3">
+				<label for="address" class="form-label">Street Address</label>
+					<input 
+						type="text" 
+						id="address" 
+						placeholder="Where will this opportunity take place?"
+						v-model="data.opportunity.address" 
+						class="form-control" 
+						required
+					>
+					<div class="invalid-feedback">
+						Please enter the opportunity's address.
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-check-label" for="isVirtual">
+						Is this a virtual opportunity?
+					</label>
+					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isVirtual" id="isVirtual">
+				</div>
+
+				<div class="mb-3">
+					<label class="form-check-label" for="isHybrid">
+						Is this a hybrid opportunity? (Remote and in person)
+					</label>
+					<input class="form-check-input" type="checkbox" v-model="data.opportunity.isHybrid" id="isHybrid">
 				</div>
 			</div>
 			<div class="step" v-else-if="steps.current == 4">
@@ -419,5 +419,13 @@
 	.showcase-thumbnail{
 		width:278px;
 		height:184px;
+	}
+
+	.form-check-input{
+		width:25px;
+		height:25px;
+		margin-left:8px;
+		margin-right:12px;
+		margin-top:0px;
 	}
 </style>

@@ -365,7 +365,10 @@
 		{alt: 'civics-voting', src: '/img/impact-area-civics-voting.png'},
 		{alt: 'immigration', src: '/img/impact-area-immigration.png'},
 		{alt: 'justice-incarceration', src: '/img/impact-area-justice-incarceration.png'},
-		{alt: 'youth', src: '/img/impact-area-youth.png'}
+		{alt: 'youth', src: '/img/impact-area-youth.png'},
+		{alt: 'homelessness', src: '/img/impact-area-homelessness.png'},
+		{alt: 'education', src: '/img/impact-area-education.png'},
+		{alt: 'other', src: '/img/impact-area-other.png'}
 	];
 
 	const impactAreas = {
@@ -383,7 +386,8 @@
 			{id: 'peopleDisabilities', name: 'People with Disabilities'},
 			{id: 'deniors', name: 'Seniors'},
 			{id: 'technology', name: 'Technology'},
-			{id: 'youth', name: 'Youth'}
+			{id: 'youth', name: 'Youth'},
+			{id: 'other', name: 'Other'}
 		]
 	};
 

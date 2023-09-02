@@ -47,7 +47,6 @@
 
 <script setup>
 	const search = () => {
-		console.log('clicked search');
 		navigateTo('/opportunities');
 	};
 </script>

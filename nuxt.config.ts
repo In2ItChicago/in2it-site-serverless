@@ -20,6 +20,11 @@ export default defineNuxtConfig({
 	routeRules: {
 		'/auth/sign-out': {ssr: false}
 	},
+	runtimeConfig: {
+		public: {
+			GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY
+		}
+	},
 	app: {
 		head: {
 			charset: 'utf-8',

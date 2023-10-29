@@ -1,6 +1,6 @@
 <template>
 	<div class="col-sm-12 col-md-6 col-lg-3">
-		<div class="card my-3 event-card">
+		<div class="card my-3 event-card" @click="navigate">
 			<img :src="'/img/impact-area-' + opportunity.thumbnailId + '.png'" class="card-img-top featured-event-image img-fluid" alt="featured-event">
 			<div class="card-img-overlay p-0" style="height:160px;" v-if="opportunity.startDateTime">
 				<h5 class="card-date-overlay">{{ overlayDate }}</h5>
@@ -72,6 +72,10 @@
 	if (docSnap.exists()) {
 		organization = docSnap.data();
 	}
+
+	const navigate = () => {
+		navigateTo('/opportunities/view/' + opportunity.documentId);
+	};
 </script>
 
 <style>
@@ -93,7 +97,8 @@
 
 	.event-card{
 		border-radius:0px;
-		filter:drop-shadow(0px 4px 4px #00000040)
+		filter:drop-shadow(0px 4px 4px #00000040);
+		cursor:pointer;
 	}
 
 	.featured-event-image{

@@ -1,5 +1,5 @@
 <template>
-	<div class="card my-3 event-card">
+	<div class="card my-3 event-card" @click="navigate">
 		<div class="row g-0">
 			<div class="col-md-4">
 				<img :src="'/img/impact-area-' + opportunity.thumbnailId + '.png'" class="card-img-top featured-event-image img-fluid" alt="featured-event">
@@ -78,6 +78,10 @@
 	if (docSnap.exists()) {
 		organization = docSnap.data();
 	}
+
+	const navigate = () => {
+		navigateTo('/opportunities/view/' + opportunity.documentId);
+	};
 </script>
 
 <style>

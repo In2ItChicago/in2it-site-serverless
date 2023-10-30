@@ -99,6 +99,11 @@
 		border-radius:0px;
 		filter:drop-shadow(0px 4px 4px #00000040);
 		cursor:pointer;
+		transition:0.3s;
+	}
+
+	.event-card:hover{
+		filter:drop-shadow(0px 4px 4px #00000090);
 	}
 
 	.featured-event-image{

@@ -432,4 +432,8 @@
 		margin-right:12px;
 		margin-top:0px;
 	}
+
+	.dp__theme_dark {
+		--dp-background-color: #212121;
+	}
 </style>

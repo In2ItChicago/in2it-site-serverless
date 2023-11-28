@@ -4,12 +4,12 @@
 
 		<div class="row gx-3 gy-2 align-items-center in2it-form">
 			<div class="col-auto">
-				<input id="startDate" class="form-control" type="date"/>
+				<VueDatePicker v-model="searchCriteria.startDate" placeholder="Start date" :enable-time-picker="false" />
 				<span id="startDateSelected"></span>
 			</div>
 
 			<div class="col-auto">
-				<input id="startDate" class="form-control" type="date" />
+				<VueDatePicker v-model="searchCriteria.endDate" placeholder="End date" :enable-time-picker="false" />
 				<span id="startDateSelected"></span>
 			</div>
 
@@ -46,8 +46,22 @@
 </template>
 
 <script setup>
+	import VueDatePicker from '@vuepic/vue-datepicker';
+	import '@vuepic/vue-datepicker/dist/main.css';	
+
+	const searchCriteria = reactive({
+		startDate: new Date(), //Current date
+		endDate: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000), //Two weeks from now
+		neighborhood: '',
+		searchTerms: '',
+		virtualOnly: false
+	});
+
 	const search = () => {
-		navigateTo('/opportunities');
+		navigateTo({
+			path: '/opportunities',
+			query: searchCriteria
+		});
 	};
 </script>
 
@@ -62,7 +76,6 @@
 		display:flex;
 		flex-direction:column;
 		background: #F3F3F8 0% 0% no-repeat padding-box;
-		opacity:0.85;
 		padding:20px;
 		border-radius:10px;
 	}

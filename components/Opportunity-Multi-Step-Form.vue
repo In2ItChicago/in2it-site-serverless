@@ -94,7 +94,7 @@
 				<div v-if="!data.opportunity.isContinuous">
 					<div class="mb-3">
 						<label for="event-start-date" class="form-label">Event Start Date & Time</label>
-						<input type="datetime-local" id="event-start-date" v-model="data.opportunity.startDateTime" class="form-control" required>
+						<VueDatePicker v-model="data.opportunity.startDateTime" id="event-start-date" placeholder="Start date" />
 						<div class="invalid-feedback">
 							Please enter a valid event date.
 						</div>
@@ -109,7 +109,7 @@
 
 					<div v-if="data.opportunity.isMultiDay" class="mb-3">
 						<label for="event-end-date" class="form-label">Event End Date</label>
-						<input type="datetime-local" id="event-end-date" v-model="data.opportunity.endDateTime" class="form-control" required>
+						<VueDatePicker v-model="data.opportunity.endDateTime" id="event-end-date" placeholder="End date" />
 						<div class="invalid-feedback">
 							Please enter a valid event date.
 						</div>
@@ -318,6 +318,9 @@
 </template>
 
 <script setup>
+	import VueDatePicker from '@vuepic/vue-datepicker';
+	import '@vuepic/vue-datepicker/dist/main.css';	
+
 	const props = defineProps({
 		data: {
 			type: Object,

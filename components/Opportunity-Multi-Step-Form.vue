@@ -353,7 +353,7 @@
 
 	let submitForm = () => {
 		data.opportunity.startDateTime = formatDate(data.opportunity.startDateTime);
-		searchCriteria.endDateTime = formatDate(data.opportunity.endDateTime);
+		data.opportunity.endDateTime = formatDate(data.opportunity.endDateTime);
 		emit('submit');
 	};
 

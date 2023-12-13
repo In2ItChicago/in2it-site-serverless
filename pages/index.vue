@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-	import { getDocs, collection, query, where, limit, FieldPath } from "firebase/firestore";
+	import { getDocs, collection, query, where, limit, orderBy } from "firebase/firestore";
 	const db = useFirestore();
 
 	const opportunityData = reactive({
@@ -38,7 +38,7 @@
 		approvedOrgUids.push(doc.id);
 	});
 
-	const opportunitiesQuery = query(collection(db, "opportunities"), where('submitterUid', 'in', approvedOrgUids), limit(4));
+	const opportunitiesQuery = query(collection(db, "opportunities"), where('submitterUid', 'in', approvedOrgUids), orderBy('submittedAt', 'desc'), limit(4));
 	const querySnapshot = await getDocs(opportunitiesQuery);
 	querySnapshot.forEach((doc) => {
 		let data = doc.data();

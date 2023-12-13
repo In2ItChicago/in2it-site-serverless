@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-	import { getDocs, collection } from "firebase/firestore";
+	import { getDocs, where, query, orderBy, collection } from "firebase/firestore";
 	const db = useFirestore();
 
 	const opportunityData = reactive({
@@ -15,8 +15,16 @@
 		isLoading: true
 	});
 
-	const querySnapshot = await getDocs(collection(db, "opportunities"));
-	querySnapshot.forEach((doc) => {
+	let approvedOrgUids = [];
+	const approvedOrgsRef = collection(db, 'approved_org_uids');
+	const approvedOrgsSnapshot = await getDocs(approvedOrgsRef);
+	approvedOrgsSnapshot.forEach((doc) => {
+		approvedOrgUids.push(doc.id);
+	});
+
+	const opportunitiesQuery = query(collection(db, "opportunities"), where('submitterUid', 'in', approvedOrgUids), orderBy('submittedAt', 'desc'));
+	const snapshot = await getDocs(opportunitiesQuery);
+	snapshot.forEach((doc) => {
 		let data = doc.data();
 		data.documentId = doc.id;
 		opportunityData.list.push(data);

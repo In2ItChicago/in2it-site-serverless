@@ -31,6 +31,25 @@
 		middleware: ['auth'],
 	});
 
+	let getTimestamp = () => {
+		const date = new Date(); // Get the current date and time
+
+		const options = {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			second: 'numeric',
+			timeZoneName: 'short',
+			timeZone: 'America/Chicago',
+		};
+
+		const formatter = new Intl.DateTimeFormat('en-US', options);
+
+		return formatter.format(date);
+	};
+
 	const opportunityData = reactive({
 		method: 'add',
 		wasSuccessfullySubmitted: false,
@@ -62,7 +81,8 @@
 			accomodationsOther: '',
 			hasStrenuousActivity: false,
 			strenuousActivityDescription: '',
-			additionalInformation: ''
+			additionalInformation: '',
+			submittedAt: getTimestamp()
 		}
 	});
 

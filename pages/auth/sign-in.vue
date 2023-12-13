@@ -6,48 +6,56 @@
 				<p>Log in to your account or <a href="/auth/sign-up">register</a>.</p>
 				<form @submit.prevent="signIn">
 					<div class="mb-3">
-						<label for="email" class="form-label">Email</label>
-						<input type="email" class="form-control" id="email" v-model="email" name="email" placeholder="Enter your email" required>
+						<input type="email" class="form-control" id="email" v-model="user.email" name="email" placeholder="Email" required>
+					</div>
+
+					<div class="mb-3">
+						<input 
+							type="password" 
+							id="password" 
+							placeholder="Password"
+							v-model="user.password" 
+							class="form-control" required
+						>
+						<div class="invalid-feedback">
+							Please enter a password.
+						</div>
 					</div>
 					
 					<button type="submit" class="btn btn-primary sign-in-btn in2it-btn">Sign in with Email</button>
 				</form>
-			</div>
-			<div class="d-flex flex-column align-items-center" v-if="submission.state">
-				<img src="/img/icons/check-circle-outline.svg" width="84" height="84">
-				<h1 class="text-center">Check your inbox</h1>
-				<p class="text-center">In a few moments, you will receive an email from us. <br>
-					Confirm your identity by clicking the link in the email.
-				</p>
-			
-				<p>Don't have an account? <a href="/auth/sign-up" style="text-decoration: none;">Register</a>.</p>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
+	import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
 
-	const email = useState('email');
+	const user = reactive({
+		email: '',
+		name: '',
+		password: '',
+	});
+
 	const submission = reactive({state: false});
 
 	const signIn = async () => {
-		console.log('sign in attempt', email.value);
+		console.log('sign in attempt', user.email);
 
 		const auth = getAuth();
 		const actionCodeSettings = {
 			url: window.location.protocol + '//' + window.location.host + '/dashboard',
 			handleCodeInApp: true
 		};
-		sendSignInLinkToEmail(auth, email.value, actionCodeSettings)
-		.then(() => {
-			console.log('submission was successul! Setting ' + email.value + ' localStorage');
-			// The link was successfully sent. Inform the user.
-			// Save the email locally so you don't need to ask the user for it again
-			// if they open the link on the same device.
-			window.localStorage.setItem('emailForSignIn', email.value);
+		signInWithEmailAndPassword (auth, user.email, user.password)
+		.then((userCredential) => {
+			console.log('submission was successul! Setting ' + user.email + ' localStorage');
+			console.log('userCredential', userCredential);
+
 			submission.state = true;
+
+			navigateTo('/dashboard/organization');
 		})
 		.catch((error) => {
 			console.error('this failed!', error);

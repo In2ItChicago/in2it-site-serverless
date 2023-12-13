@@ -3,6 +3,13 @@
 		<div class="row flex-nowrap">
 			<Dashboard-Sidebar></Dashboard-Sidebar>
 			<div class="col-md-6 py-3">
+				<div v-if="!organization.isApproved && !organization.isLoading">
+					<h1>Opportunity Submissions</h1>
+					<p>IN2IT must review all organizations before they can be allowed to post opportunities on this website.</p>
+					<h3>We are currently waiting for approval!</h3>
+					<hr>
+				</div>
+
 				<h1>My Organization</h1>
 				<div v-if="organization.isLoading">
 					<div class="spinner-border mt-3" role="status" style="color: #034a57; width: 100px; height: 100px;">
@@ -77,6 +84,7 @@
 		name: '',
 		mission: '',
 		website: '',
+		isApproved: false,
 		detailsSaved: false
 	});
 
@@ -85,8 +93,8 @@
 		const auth = getAuth();
 		organization.ownerUid = auth.currentUser.uid;
 
-		const docRef = doc(db, 'organizations', auth.currentUser.uid);
-		const docSnap = await getDoc(docRef);
+		const orgRef = doc(db, 'organizations', auth.currentUser.uid);
+		const docSnap = await getDoc(orgRef);
 		if (docSnap.exists()) {
 			//Populate form
 			const data = docSnap.data();
@@ -94,6 +102,16 @@
 			organization.mission = data.mission;
 			organization.website = data.website;
 		}
+
+		const approvalRef = doc(db, 'approved_org_uids', auth.currentUser.uid);
+		const approvalSnap = await getDoc(approvalRef);
+		if (approvalSnap.exists()) {
+			organization.isApproved = true;
+		}
+		else {
+			organization.isApproved = false;
+		}
+
 		organization.isLoading = false;
 	});
 

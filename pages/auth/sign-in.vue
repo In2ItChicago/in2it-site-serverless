@@ -21,6 +21,10 @@
 							Please enter a password.
 						</div>
 					</div>
+
+					<div class="alert alert-danger" role="alert" v-if="submission.errorMessage">
+						{{ submission.errorMessage }}
+					</div>
 					
 					<button type="submit" class="btn btn-primary sign-in-btn in2it-btn">Sign in with Email</button>
 				</form>
@@ -38,7 +42,10 @@
 		password: '',
 	});
 
-	const submission = reactive({state: false});
+	const submission = reactive({
+		state: false,
+		errorMessage: ''
+	});
 
 	const signIn = async () => {
 		console.log('sign in attempt', user.email);
@@ -58,11 +65,7 @@
 			navigateTo('/dashboard/organization');
 		})
 		.catch((error) => {
-			console.error('this failed!', error);
-			console.log(error.code, error.message);
-			const errorCode = error.code;
-			const errorMessage = error.message;
-		// ...
+			submission.errorMessage = error.message;
 		});
 	}
 </script>

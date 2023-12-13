@@ -30,6 +30,11 @@
 							Please enter a password.
 						</div>
 					</div>
+
+					<div class="alert alert-danger" role="alert" v-if="submission.errorMessage">
+						{{ submission.errorMessage }}
+					</div>
+
 					<button type="submit" class="btn btn-primary sign-up-btn in2it-btn">Continue</button>
 				</form>
 
@@ -96,7 +101,7 @@
 <script setup>
 	import { doc, setDoc} from "firebase/firestore";
 	import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-	
+
 	const db = useFirestore();
 	const user = reactive({
 		email: '',
@@ -110,7 +115,10 @@
 		website: ''
 	});
 
-	const submission = reactive({step: 'emailPassword'});
+	const submission = reactive({
+		step: 'emailPassword',
+		errorMessage: ''
+	});
 
 	let signUp = () => {
 		console.log('we are trying to sign up', user.email);
@@ -122,20 +130,12 @@
 		};
 		createUserWithEmailAndPassword(auth, user.email, user.password)
 		.then((userCredential) => {
-			console.log('submission was successul! Setting ' + user.email + ' localStorage');
-			console.log('userCredential', userCredential);
-			// The link was successfully sent. Inform the user.
-			// Save the email locally so you don't need to ask the user for it again
-			// if they open the link on the same device.
-			window.localStorage.setItem('emailForSignIn', user.email);
+			console.log('user creation successful userCredential', userCredential);
 			submission.step = 'orgDetails';
-		// ...
 		})
 		.catch((error) => {
 			console.error('this failed!', error);
-			const errorCode = error.code;
-			const errorMessage = error.message;
-		// ...
+			submission.errorMessage = error.message;
 		});
 	};
 

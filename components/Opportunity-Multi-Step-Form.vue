@@ -390,7 +390,10 @@
 		{alt: 'youth', src: '/img/impact-area-youth.png'},
 		{alt: 'homelessness', src: '/img/impact-area-homelessness.png'},
 		{alt: 'education', src: '/img/impact-area-education.png'},
-		{alt: 'other', src: '/img/impact-area-other.png'}
+		{alt: 'other', src: '/img/impact-area-other.png'},
+		{alt: 'people-disabilities', src: '/img/impact-area-people-disabilities.png'},
+		{alt: 'community-development', src: '/img/impact-area-community-development.png'},
+		{alt: 'seniors', src: '/img/impact-area-seniors.png'},
 	];
 
 	const impactAreas = {
@@ -406,7 +409,7 @@
 			{id: 'justiceIncarceration', name: 'Justice and Incarceration'},
 			{id: 'natureConservation', name: 'Nature and Conservation'},
 			{id: 'peopleDisabilities', name: 'People with Disabilities'},
-			{id: 'deniors', name: 'Seniors'},
+			{id: 'seniors', name: 'Seniors'},
 			{id: 'technology', name: 'Technology'},
 			{id: 'youth', name: 'Youth'},
 			{id: 'other', name: 'Other'}

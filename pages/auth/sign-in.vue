@@ -26,7 +26,7 @@
 						{{ submission.errorMessage }}
 					</div>
 					
-					<button type="submit" class="btn btn-primary sign-in-btn in2it-btn">Sign in with Email</button>
+					<button type="submit" class="btn btn-primary sign-in-btn in2it-btn">Sign In</button>
 				</form>
 			</div>
 		</div>

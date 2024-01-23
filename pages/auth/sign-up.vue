@@ -101,7 +101,7 @@
 </template>
 
 <script setup>
-	import { doc, setDoc} from "firebase/firestore";
+	import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 	import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 	const db = useFirestore();
@@ -146,6 +146,23 @@
 		const auth = getAuth();
 		await setDoc(doc(db, 'organizations', auth.currentUser.uid), organization).then(docRef => {
 			console.log('org details saved successfully!', organization);
+
+			let emailContent = 'A new organization has registered on IN2IT! <br>';
+			emailContent += 'Name: <b>' + organization.name + '</b><br>';
+			emailContent += 'Mission: <b>' + organization.mission + '</b><br>';
+			emailContent += 'Website: ' + organization.website + '<br>';
+
+			addDoc(collection(db, 'mail'), {
+				to: 'in2itchicago@gmail.com', 
+				message: {
+					subject: 'New Organization Registration',
+					text: emailContent,
+					html: emailContent
+				}
+			}).then(docRef => {
+				console.log('Queued email for delivery!')
+			});
+
 			navigateTo('/dashboard/organization');
 		});
 	};

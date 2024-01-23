@@ -6,6 +6,7 @@
 				<div v-if="!organization.isApproved && !organization.isLoading">
 					<h1>Opportunity Submissions</h1>
 					<p>IN2IT must review all organizations before they can be allowed to post opportunities on this website.</p>
+					<p>Most organizations are approved within <b>3 days</b>.</p>
 					<h3>We are currently waiting for approval!</h3>
 					<hr>
 				</div>

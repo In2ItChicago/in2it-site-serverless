@@ -391,9 +391,9 @@
 		{alt: 'homelessness', src: '/img/impact-area-homelessness.png'},
 		{alt: 'education', src: '/img/impact-area-education.png'},
 		{alt: 'other', src: '/img/impact-area-other.png'},
-		{alt: 'people-disabilities', src: '/img/impact-area-people-disabilities.png'},
+		{alt: 'people-disabilities', src: '/img/impact-area-people-with-disabilities.png'},
 		{alt: 'community-development', src: '/img/impact-area-community-development.png'},
-		{alt: 'seniors', src: '/img/impact-area-seniors.png'},
+		{alt: 'seniors', src: '/img/impact-area-seniors.png'}
 	];
 
 	const impactAreas = {

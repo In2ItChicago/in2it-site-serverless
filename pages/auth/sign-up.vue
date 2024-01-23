@@ -45,8 +45,8 @@
 
 			<div v-if="submission.step == 'orgDetails'">
 				<div class="d-flex flex-column align-items-center">
-					<h1 class="text-center">Thanks for signing up!</h1>
-					<p class="text-center">Please tell us a little bit about your organization.</p>
+					<h1 class="text-center">Thanks for registering!</h1>
+					<p>Please tell us a little bit about your organization. The IN2IT team must approve an organization before their opportunities can appear on this website.</p>
 				</div>
 				
 				<form @submit.prevent="submitOrgDetails" class="needs-validation" novalidate>

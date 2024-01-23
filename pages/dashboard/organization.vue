@@ -2,12 +2,14 @@
 	<div class="container-fluid">
 		<div class="row flex-nowrap">
 			<Dashboard-Sidebar></Dashboard-Sidebar>
-			<div class="col-md-6 py-3">
+			<div class="col-md-4 py-3">
 				<div v-if="!organization.isApproved && !organization.isLoading">
-					<h1>Opportunity Submissions</h1>
-					<p>IN2IT must review all organizations before they can be allowed to post opportunities on this website.</p>
-					<p>Most organizations are approved within <b>3 days</b>.</p>
-					<h3>We are currently waiting for approval!</h3>
+					<h3>
+						Account pending approval!
+					</h3>
+					<p>IN2IT reviews all organizations before their opportunities can appear on this website. Most organizations are approved <b>within 3 business days</b>. You can expect to receive an email from us soon!</p>
+
+					<p>In the meantime, feel free to <a href="/dashboard/opportunities/add">add an opportunity.</a> It will automatically appear on the website as soon as your account is approved by the IN2IT team.</p>
 					<hr>
 				</div>
 

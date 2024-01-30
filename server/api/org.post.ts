@@ -1,5 +1,5 @@
 import { getAuth } from 'firebase-admin/auth';
-import { initializeApp } from 'firebase-admin/app';
+import { initializeApp, getApps } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 const config = {
@@ -12,7 +12,7 @@ const config = {
     measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
-const app = initializeApp(config);
+const app = getApps().length === 0 ? initializeApp(config) : getApps()[0];
 const db = getFirestore(app);
 
 let approvedOrgUids: string[] = [];

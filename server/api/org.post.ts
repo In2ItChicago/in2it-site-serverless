@@ -28,7 +28,7 @@ const generateToken = function (length : number) {
 };
 
 const getRequestURL = function (query : any) {
-    return 'https://in2itchicago.com/api/permissions?action=' + query.action + '&token=' + query.token;
+    return 'https://in2itchicago.com/api/permissions?orgId=' + query.orgId + '&action=' + query.action + '&token=' + query.token;
 };
 
 const saveOrgDetails = async (body: any) => {
@@ -49,8 +49,8 @@ const saveOrgDetails = async (body: any) => {
     emailContent += 'Name: <b>' + organization.name + '</b><br>';
     emailContent += 'Mission: <b>' + organization.mission + '</b><br>';
     emailContent += 'Website: ' + organization.website + '<br>';
-    emailContent += 'Click to approve: <a href=' + getRequestURL({action: 'approve', token: organization.token}) + '>Approve ' + organization.name + '</a><br>';
-    emailContent += 'Click to deny: <a href=' + getRequestURL({action: 'deny', token: organization.token}) + '>Deny ' + organization.name + '</a><br>';
+    emailContent += 'Click to approve: <a href=' + getRequestURL({orgId: uid, action: 'approve', token: organization.token}) + '>Approve ' + organization.name + '</a><br>';
+    emailContent += 'Click to deny: <a href=' + getRequestURL({orgId: uid, action: 'deny', token: organization.token}) + '>Deny ' + organization.name + '</a><br>';
 
     await db.collection('organizations').doc(uid).set(organization).then(() => {
         console.log('org details saved successfully!', body);

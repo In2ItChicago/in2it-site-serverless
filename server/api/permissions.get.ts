@@ -17,8 +17,42 @@ const db = getFirestore(app);
 
 export default defineEventHandler(async (event) => {
 	const query = getQuery(event);
-	const action = query.action;
-	const token = query.token;
 
-    return {route: 'permissions', state: true, action: action, token: token};
+	let uid = '';
+	if (query.orgId) {
+		uid = query.orgId.toString();
+	}
+
+	let action = '';
+	if (query.action) {
+		action = query.action.toString();
+	}
+
+	let token = '';
+	if (query.token) {
+		token = query.token.toString();
+	}
+
+	const snap = await db.collection('organizations').doc(uid).get();
+	const organization = snap.data();
+	if (!snap.exists || !organization) {
+		return {error: 'We could not find this organization, they may have been deleted.'};
+	}
+
+	if (organization && organization.token !== token) {
+		return {error: 'We found this organization, however an invalid token was provided, please try clicking the ' + action + ' link in the email again.'};
+	}
+
+	if (action === 'approve') {
+		await db.collection('approved_org_uids').doc(uid).set({}).then(() => {
+			console.log('Added an org uid to approved list!', organization);
+		});
+	}
+	else if (action === 'deny') {
+		await db.collection('approved_org_uids').doc(uid).delete().then(() => {
+			console.log('Deleted an org uid from approved list', organization);
+		});
+	}
+
+	return {message: 'Organization permissions were updated', name: organization.name};
 });

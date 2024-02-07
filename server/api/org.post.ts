@@ -15,13 +15,6 @@ const config = {
 const app = getApps().length === 0 ? initializeApp(config) : getApps()[0];
 const db = getFirestore(app);
 
-let approvedOrgUids: string[] = [];
-db.collection('approved_org_uids').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        approvedOrgUids.push(doc.id);
-    });
-});
-
 const saveOrgDetails = async (body: any) => {
     const organization = body.organization;
 

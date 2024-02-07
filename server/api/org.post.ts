@@ -15,8 +15,25 @@ const config = {
 const app = getApps().length === 0 ? initializeApp(config) : getApps()[0];
 const db = getFirestore(app);
 
+const generateToken = function (length : number) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+};
+
+const getRequestURL = function (query : any) {
+    return 'https://in2itchicago.com/api/permissions?action=' + query.action + '&token=' + query.token;
+};
+
 const saveOrgDetails = async (body: any) => {
     const organization = body.organization;
+    organization.token = generateToken(32);
 
     let uid = null;
 
@@ -32,6 +49,8 @@ const saveOrgDetails = async (body: any) => {
     emailContent += 'Name: <b>' + organization.name + '</b><br>';
     emailContent += 'Mission: <b>' + organization.mission + '</b><br>';
     emailContent += 'Website: ' + organization.website + '<br>';
+    emailContent += 'Click to approve: <a href=' + getRequestURL({action: 'approve', token: organization.token}) + '>Approve ' + organization.name + '</a><br>';
+    emailContent += 'Click to deny: <a href=' + getRequestURL({action: 'deny', token: organization.token}) + '>Deny ' + organization.name + '</a><br>';
 
     await db.collection('organizations').doc(uid).set(organization).then(() => {
         console.log('org details saved successfully!', body);

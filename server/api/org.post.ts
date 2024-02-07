@@ -28,7 +28,7 @@ const generateToken = function (length : number) {
 };
 
 const getRequestURL = function (query : any) {
-    return 'https://in2itchicago.com/api/permissions?orgId=' + query.orgId + '&action=' + query.action + '&token=' + query.token;
+    return 'https://staging.in2itchicago.com/api/permissions?orgId=' + query.orgId + '&action=' + query.action + '&token=' + query.token;
 };
 
 const saveOrgDetails = async (body: any) => {

@@ -6,7 +6,7 @@
 				<h5 class="card-date-overlay">{{ overlayDate }}</h5>
 			</div>
 			
-			<div class="card-body">
+			<div class="card-body d-flex flex-column">
 				<h5 class="card-title">
 					{{ opportunity.opportunityName }}
 				</h5>
@@ -28,7 +28,7 @@
 					<span v-if="opportunity.isVirtual">Virtual</span>
 				</div>
 
-				<a :href="'/opportunities/view/' + opportunity.documentId" class="btn btn-primary learn-more-button mt-2">Learn More</a>
+				<a :href="'/opportunities/view/' + opportunity.documentId" class="btn btn-primary learn-more-button">Learn More</a>
 			</div>
 		</div>
 	</div>
@@ -89,6 +89,8 @@
 		height:60px;
 		font-size:24px;
 		font: normal normal bold 24px/32px Nunito;
+		align-self: flex-end;
+		margin-top: auto;
 	}
 
 	.learn-more-button:hover, .learn-more-button:active, .learn-more-button:focus{
@@ -100,6 +102,9 @@
 		filter:drop-shadow(0px 4px 4px #00000040);
 		cursor:pointer;
 		transition:0.3s;
+		height:570px;
+		max-height:570px;
+		min-height:570px;
 	}
 
 	.event-card:hover{
@@ -125,6 +130,19 @@
 	.card-title{
 		font-size:26px;
 		color:#104A57;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 1; /* number of lines to show */
+				line-clamp: 1; 
+		-webkit-box-orient: vertical;
+	}
+
+	.card-text{
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 4; /* number of lines to show */
+				line-clamp: 4; 
+		-webkit-box-orient: vertical;
 	}
 
 	.organization-name{

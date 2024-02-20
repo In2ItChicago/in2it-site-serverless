@@ -80,4 +80,9 @@
 		font-size:26px;
 		margin-bottom: 20px;;
 	}
+
+	.view-all-events-link:hover{
+		color:#034A57;
+		text-decoration: underline;
+	}
 </style>

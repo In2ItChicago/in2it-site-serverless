@@ -10,13 +10,16 @@
 
 				<p>We help civic organizations find local volunteers seeking to make an impact in their communities. We help you connect with mission-driven volunteers, and direct them to your volunteer opportunities on whatever channels you're already using.</p>
 
-				<h2>How to Get Started</h2>
-				<ul>
+				<h2>How to Post an Opportunity</h2>
+				<ol class="cta-list">
 					<li>Register</li>
-					<li>Login</li>
-					<li>Fill out basic organization information</li>
-					<li>Post an event</li>
-				</ul>
+					<li>Provide organization information</li>
+					<li>Post an Opportunity</li>
+				</ol>
+
+				<a href="/auth/sign-up" class="btn btn-lg in2it-btn-cta mb-4">
+					Get Started
+				</a>
 
 				<h2>Why IN2IT Chicago?</h2>
 				<ul>
@@ -75,5 +78,10 @@
 		color: #034A57 !important;
 		opacity: 1;
 		text-decoration: underline;
+	}
+
+	.cta-list li{
+		font-size:20px;
+		font-family:'Nunito', sans-serif;
 	}
 </style>

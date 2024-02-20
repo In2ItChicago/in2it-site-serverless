@@ -3,12 +3,13 @@
 		<div class="container flex-fill">
 			<div class="row">
 				<div class="col d-flex flex-column mt-3">
-					<a href="/become-an-organizer" class="footer-underlined-link">For Organizers</a>
-					<a href="/add-an-opportunity" class="footer-underlined-link">How to Post an Event</a>
+					<a href="/about-us" class="footer-nav-link">About Us</a>
+					<a href="/for-organizations" class="footer-nav-link">For Organizations</a>
+					<a href="/for-volunteers" class="footer-nav-link">For Volunteers</a>
 				</div>
 				<div class="col d-flex flex-column align-items-end mt-3">
-					<a href="/join-us" class="footer-underlined-link">Provide Feedback</a>
-					<a href="mailto:in2itchicago@gmail.com" class="footer-underlined-link">Contact Us</a>
+					<a href="/join-us" class="footer-nav-link">Provide Feedback</a>
+					<a href="mailto:in2itchicago@gmail.com" class="footer-nav-link">Contact Us</a>
 				</div>
 			</div>
 		</div>
@@ -55,11 +56,16 @@
 		background: transparent linear-gradient(3deg, #034A57 0%, #4DA89C 100%) 0% 0% no-repeat padding-box;
 	}
 
-	.footer-underlined-link{
+	.footer-nav-link{
 		color:#fff;
 		margin-top:20px;
-		text-decoration: underline;
+		text-decoration: none;
 		font: normal 18px Nunito;
+	}
+
+	.footer-nav-link:hover{
+		color:#fff;
+		text-decoration: underline;
 	}
 
 	.footer-link{
@@ -68,6 +74,11 @@
 		white-space: nowrap;
 		text-decoration: none;
 		margin-bottom:30px;
+	}
+
+	.footer-link:hover{
+		color:#fff;
+		text-decoration: underline;
 	}
 
 	.chihacknight-logo{

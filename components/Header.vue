@@ -24,19 +24,15 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-3">
-					<li class="nav-item" v-if="!loggedIn">
-						<a class="nav-link in2it-nav-link mx-2" href="/auth/sign-in">Sign In</a>
-					</li>
-					<li class="nav-item" v-if="!loggedIn">
-						<a class="nav-link in2it-nav-link mx-2" href="/auth/sign-up">Register</a>
-					</li>
-					<li class="nav-item dropdown" v-if="loggedIn">
+					<li class="nav-item dropdown">
 						<a class="nav-link in2it-nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Account
+							For Organizations
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="/dashboard/opportunities/list">Dashboard</a></li>
-							<li><a class="dropdown-item" href="/auth/sign-out">Sign Out</a></li>
+							<li v-if="!loggedIn"><a class="dropdown-item" href="/auth/sign-in">Sign In</a></li>
+							<li v-if="!loggedIn"><a class="dropdown-item" href="/for-organizations">How to Post an Opportunity</a></li>
+							<li v-if="loggedIn"><a class="dropdown-item" href="/dashboard/opportunities/list">Dashboard</a></li>
+							<li v-if="loggedIn"><a class="dropdown-item" href="/auth/sign-out">Sign Out</a></li>
 						</ul>
 					</li>
 				</ul>

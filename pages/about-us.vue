@@ -3,7 +3,7 @@
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col-md-3 col-sm-12 d-none d-lg-block">
-				<AboutPagesLinkGroup></AboutPagesLinkGroup>
+				<AboutPagesLinkGroup :page="'about-us'"></AboutPagesLinkGroup>
 			</div>
 			<div class="col-md-9 col-sm-12">
 				<h1>About Us</h1>
@@ -76,9 +76,3 @@
 		</div>
 	</div>
 </template>
-
-<style>
-	.about-link{
-		text-decoration: none;
-	}
-</style>

@@ -3,7 +3,7 @@
 	<div class="container mt-4">
 		<div class="row">
 			<div class="col-md-3 col-sm-12">
-				<AboutPagesLinkGroup></AboutPagesLinkGroup>
+				<AboutPagesLinkGroup :page="'join-us'"></AboutPagesLinkGroup>
 			</div>
 			<div class="col-md-9 col-sm-12">
 				<h1>Join Us</h1>

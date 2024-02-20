@@ -20,7 +20,7 @@
 						<a class="nav-link in2it-nav-link mx-2" href="/about-us">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link in2it-nav-link mx-2" href="/join-us">Join Our Team</a>
+						<a class="nav-link in2it-nav-link mx-2" href="/opportunities">Browse Events</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-3">

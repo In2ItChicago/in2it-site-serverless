@@ -1,5 +1,5 @@
 <template>
-	<div class="shadow-sm p-4 mb-5 bg-body rounded">
+	<div class="shadow p-4 mb-5 bg-body rounded">
 		<a class="d-flex mb-2 about-link" href="#terms-of-use">Terms of Use</a>
 		<a class="d-flex mb-2 about-link" href="#conditions">Conditions of use</a>
 		<a class="d-flex mb-2 about-link" href="#privacy-policy">Privacy policy</a>

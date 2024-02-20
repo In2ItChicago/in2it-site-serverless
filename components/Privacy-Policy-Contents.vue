@@ -1,5 +1,5 @@
 <template>
-	<div class="shadow-sm p-4 mb-5 bg-body rounded">
+	<div class="shadow p-4 mb-5 bg-body rounded">
 		<a class="d-flex mb-2 about-link" href="#privacy-policy">Privacy Policy</a>
 		<a class="d-flex mb-2 about-link" href="#what-we-collect">What User Data We Collect</a>
 		<a class="d-flex mb-2 about-link" href="#why-we-collect">Why We Collect User Data</a>

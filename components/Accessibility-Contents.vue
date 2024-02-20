@@ -1,5 +1,5 @@
 <template>
-	<div class="shadow-sm p-4 mb-5 bg-body rounded">
+	<div class="shadow p-4 mb-5 bg-body rounded">
 		<a class="d-flex mb-2 about-link" href="#our-commitment">Our Commitment to Accessibility</a>
 		<a class="d-flex mb-2 about-link" href="#accessibility-features">Accessibility Features</a>
 		<a class="d-flex mb-2 about-link" href="#feedback-and-assistance">Feedback and Assistance</a>

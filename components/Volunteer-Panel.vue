@@ -1,5 +1,5 @@
 <template>
-	<div class="shadow-sm p-3 mb-5 bg-body rounded">
+	<div class="shadow p-3 mb-5 bg-body rounded">
 		<button class="btn btn-primary volunteer-button mt-2" @click="goToVolunteer" v-if="data.opportunity.websiteLink">
 			Volunteer <img src="/img/icons/open-in-new.svg" width="24" height="24" class="mx-2"/>
 		</button>

@@ -5,7 +5,7 @@
 				<Volunteer-Panel :data="data"></Volunteer-Panel>
 			</div>
 			<div class="col-sm-12 col-md-8">
-				<div class="shadow-sm p-3 mb-5 bg-body rounded">
+				<div class="shadow p-3 mb-5 bg-body rounded">
 					<h1>
 						{{ data.opportunity.opportunityName }}
 					</h1>

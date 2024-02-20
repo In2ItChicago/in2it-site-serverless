@@ -83,7 +83,7 @@ p, li, label{
 .about-background{
 	display:flex;
 	height:50vw;
-	max-height:450px;
+	max-height:250px;
 	background: url('~/assets/img/about-background.png');
 	background-size:cover;
 	align-items:flex-start;

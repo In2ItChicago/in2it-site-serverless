@@ -7,7 +7,7 @@ h1, h2{
 h2{
 	font-family:'Nunito', sans-serif;
 	font-size:33px;
-	color:#0bab9c;
+	color:#034a57;
 }
 
 h3{
@@ -58,6 +58,18 @@ p, li, label{
 .in2it-btn-secondary:hover, .in2it-btn-secondary:focus, .in2it-btn-secondary:active{
 	color:#0E857A;
 	border:1px solid #0E857A;
+}
+
+.in2it-btn-cta {
+	background-color: #cf560a;
+	border:none;
+	border-radius:0px;
+	color:#fff;
+}
+
+.in2it-btn-cta:hover {
+	color:#fff;
+	background-color: #C15D27;
 }
 
 .in2it-home-background{

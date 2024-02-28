@@ -17,11 +17,17 @@
 				<label class="visually-hidden" for="specificSizeSelect">Preference</label>
 				<select class="form-select" id="specificSizeSelect">
 					<option selected>Neighborhood</option>
-					<option value="river-north">River North</option>
-					<option value="fulton-market">Fulton Market</option>
-					<option value="west-loop">West Loop</option>
-					<option value="south-loop">South Loop</option>
-					<option value="near-north">Near North</option>
+					<option value="bridgeport">Bridgeport</option>
+					<option value="gage-park">Gage Park</option>
+					<option value="kenwood">Kenwood</option>
+					<option value="lakeview">Lakeview</option>
+					<option value="logan-square">Logan Square</option>
+					<option value="the-loop">The Loop</option>
+					<option value="north-lawndale">North Lawndale</option>
+					<option value="pilsen">Pilsen</option>
+					<option value="portage-page">Portage Park</option>
+					<option value="rogers-park">Rogers Park</option>
+					<option value="west-pullman">West Pullman</option>
 				</select>
 			</div>
 
